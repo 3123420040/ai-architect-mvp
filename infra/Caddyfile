@@ -1,0 +1,25 @@
+{
+  auto_https off
+}
+
+http://kts.blackbirdzzzz.art, http://localhost {
+  encode zstd gzip
+
+  @api path /api/*
+  handle @api {
+    reverse_proxy api:8000
+  }
+
+  @media path /media/*
+  handle @media {
+    reverse_proxy api:8000
+  }
+
+  @backendHealth path /backend-health
+  handle @backendHealth {
+    uri replace /backend-health /health
+    reverse_proxy api:8000
+  }
+
+  reverse_proxy web:3000
+}

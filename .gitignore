@@ -1,0 +1,10 @@
+.DS_Store
+.env.production.app
+.env.production.runtime
+.playwright-cli/
+artifacts/
+output/
+__pycache__/
+*.pyc
+*.pyo
+deep-research-report (1).md

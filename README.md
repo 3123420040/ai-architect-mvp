@@ -47,16 +47,30 @@ Dùng **AI Agent** để thực hiện công việc của kiến trúc sư và h
 
 ```
 ai-architect-mvp/
-├── README.md                   # Overview (file này)
-├── analysis-full.md            # Phân tích product đầy đủ
-├── research.md                 # Research notes chung
-└── research-github-updated.md  # GitHub repos tổng hợp
+├── README.md                        # Overview (file này)
+├── analysis-full.md                 # Phân tích product đầy đủ
+├── research.md                      # Research notes chung
+├── research-github-updated.md       # GitHub repos tổng hợp
+├── deep-research-report (1).md      # Deep research open-source repos
+└── docs/
+    └── phase-1/
+        ├── 00-mvp-overview.md       # MVP scope, architecture, decisions
+        ├── 01-user-stories.md       # 23 user stories chi tiết (Given/When/Then)
+        ├── 02-tech-repos.md         # 3 project repos + 8 open-source deps
+        ├── 03-agentic-os-architecture.md  # Agentic OS design (18 patterns applied)
+        ├── 04-module-business-requirements.md  # 9 modules, 27 user stories
+        └── 05-system-design.md          # Full system design with sequence diagrams
 ```
 
 ## Status
 
 - [x] Ý tưởng + product analysis (Apr 11, 2026)
 - [x] GitHub research (Apr 11, 2026)
+- [x] Phase 1 MVP scope & user stories (Apr 11, 2026)
+- [x] Phase 1 tech stack & repo mapping (Apr 11, 2026)
+- [x] Agentic OS architecture design — 10 patterns applied (Apr 11, 2026)
+- [x] Module business requirements — 9 modules, 27 stories (Apr 11, 2026)
+- [x] System design with sequence diagrams — 8 use cases (Apr 11, 2026)
 - [ ] PoC: AI floor plan generation pipeline
 - [ ] PoC: Agent conversation flow với end-user
 - [ ] Integration với BIM tools

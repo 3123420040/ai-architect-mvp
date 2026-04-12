@@ -1,0 +1,128 @@
+services:
+  web:
+    build:
+      context: ../ai-architect-web
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:18000/api/v1}
+        NEXT_PUBLIC_WS_URL: ${NEXT_PUBLIC_WS_URL:-http://localhost:18000}
+        NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+    container_name: kts-blackbirdzzzz-art-web
+    environment:
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:18000/api/v1}
+      NEXT_PUBLIC_WS_URL: ${NEXT_PUBLIC_WS_URL:-http://localhost:18000}
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+  api:
+    build:
+      context: ../ai-architect-api
+    container_name: kts-blackbirdzzzz-art-api
+    environment:
+      APP_NAME: kts.blackbirdzzzz.art API
+      APP_ENV: development
+      APP_PORT: 8000
+      APP_CORS_ORIGINS: ${APP_CORS_ORIGINS:-http://localhost:3000}
+      DATABASE_URL: postgresql+psycopg://dev:devpass@postgres:5432/ai_architect
+      REDIS_URL: redis://redis:6379/0
+      GPU_SERVICE_URL: ${GPU_SERVICE_URL:-http://gpu:8001}
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:3000}
+      JWT_SECRET: ${JWT_SECRET:-local-dev-secret}
+      OPENAI_COMPAT_BASE_URL: ${OPENAI_COMPAT_BASE_URL:-}
+      OPENAI_COMPAT_API_KEY: ${OPENAI_COMPAT_API_KEY:-}
+      OPENAI_COMPAT_MODEL: ${OPENAI_COMPAT_MODEL:-gpt-5.4}
+      LLM_REQUEST_TIMEOUT_SECONDS: ${LLM_REQUEST_TIMEOUT_SECONDS:-60}
+      S3_ENDPOINT_URL: ${MINIO_INTERNAL_ENDPOINT_URL:-http://minio:9000}
+      S3_PUBLIC_ENDPOINT_URL: ${MINIO_PUBLIC_ENDPOINT_URL:-http://localhost:19000}
+      S3_ACCESS_KEY: minioadmin
+      S3_SECRET_KEY: minioadmin
+      S3_BUCKET: ai-architect-assets
+      S3_REGION: us-east-1
+      S3_SECURE: "false"
+    ports:
+      - "18000:8000"
+    depends_on:
+      - postgres
+      - redis
+      - minio
+    volumes:
+      - api_storage:/app/storage
+
+  gpu:
+    build:
+      context: ../ai-architect-gpu
+    container_name: kts-blackbirdzzzz-art-gpu
+    environment:
+      APP_NAME: kts.blackbirdzzzz.art GPU
+      APP_ENV: development
+      APP_PORT: 8001
+    ports:
+      - "18001:8001"
+
+  worker:
+    build:
+      context: ../ai-architect-api
+    container_name: kts-blackbirdzzzz-art-worker
+    command: celery -A app.tasks.worker.celery_app worker --loglevel=info --uid=nobody --gid=nogroup
+    environment:
+      APP_NAME: kts.blackbirdzzzz.art API Worker
+      APP_ENV: development
+      APP_PORT: 8000
+      APP_CORS_ORIGINS: ${APP_CORS_ORIGINS:-http://localhost:3000}
+      DATABASE_URL: postgresql+psycopg://dev:devpass@postgres:5432/ai_architect
+      REDIS_URL: redis://redis:6379/0
+      GPU_SERVICE_URL: ${GPU_SERVICE_URL:-http://gpu:8001}
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:3000}
+      JWT_SECRET: ${JWT_SECRET:-local-dev-secret}
+      OPENAI_COMPAT_BASE_URL: ${OPENAI_COMPAT_BASE_URL:-}
+      OPENAI_COMPAT_API_KEY: ${OPENAI_COMPAT_API_KEY:-}
+      OPENAI_COMPAT_MODEL: ${OPENAI_COMPAT_MODEL:-gpt-5.4}
+      LLM_REQUEST_TIMEOUT_SECONDS: ${LLM_REQUEST_TIMEOUT_SECONDS:-60}
+      S3_ENDPOINT_URL: ${MINIO_INTERNAL_ENDPOINT_URL:-http://minio:9000}
+      S3_PUBLIC_ENDPOINT_URL: ${MINIO_PUBLIC_ENDPOINT_URL:-http://localhost:19000}
+      S3_ACCESS_KEY: minioadmin
+      S3_SECRET_KEY: minioadmin
+      S3_BUCKET: ai-architect-assets
+      S3_REGION: us-east-1
+      S3_SECURE: "false"
+    depends_on:
+      - redis
+      - postgres
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: kts-blackbirdzzzz-art-postgres
+    environment:
+      POSTGRES_DB: ai_architect
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: devpass
+    ports:
+      - "15432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: kts-blackbirdzzzz-art-redis
+    ports:
+      - "16379:6379"
+
+  minio:
+    image: minio/minio
+    container_name: kts-blackbirdzzzz-art-minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "19000:9000"
+      - "19001:9001"
+    volumes:
+      - miniodata:/data
+
+volumes:
+  pgdata:
+  miniodata:
+  api_storage:

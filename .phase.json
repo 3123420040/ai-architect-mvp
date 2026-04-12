@@ -1,0 +1,33 @@
+{
+  "current": "phase-4",
+  "phases": {
+    "phase-1": {
+      "name": "MVP Implementation Execution",
+      "status": "completed",
+      "started": "2026-04-11",
+      "checkpoints": 14,
+      "summary": "Granular execution checkpoints for the 3-repo AI Architect MVP build."
+    },
+    "phase-2": {
+      "name": "Geometry Layer 2 & Full Deliverable Expansion",
+      "status": "baseline_completed",
+      "started": "2026-04-12",
+      "checkpoints": 7,
+      "summary": "Phase 2 expands the product from schematic package outputs to design development deliverables with Layer 2 geometry, schedules, DXF, IFC foundation, and integration QA."
+    },
+    "phase-3": {
+      "name": "Package-Centric Design Development Hardening",
+      "status": "partially_shipped",
+      "started": "2026-04-12",
+      "checkpoints": 8,
+      "summary": "Phase 3 introduced the package-centric DD export lane, KTS issue gate, DXF/IFC bundle, and production validation baseline, but several locked prerequisites are still only partially covered."
+    },
+    "phase-4": {
+      "name": "AI Needs Clarification, Design Board, and Intake UX Revamp",
+      "status": "active",
+      "started": "2026-04-12",
+      "checkpoints": 6,
+      "summary": "Phase 4 upgrades the discovery flow from MVP chat/form intake to a market-grade AI clarification workflow with structured requirement locking, design-direction board, and Vietnamese-first UX."
+    }
+  }
+}
