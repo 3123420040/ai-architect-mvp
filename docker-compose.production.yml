@@ -41,6 +41,7 @@ services:
     build:
       context: ../ai-architect-api
     container_name: kts-blackbirdzzzz-art-api-prod
+    command: sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"
     environment:
       APP_NAME: KTC KTS API
       APP_ENV: production
@@ -75,7 +76,7 @@ services:
     build:
       context: ../ai-architect-api
     container_name: kts-blackbirdzzzz-art-worker-prod
-    command: celery -A app.tasks.worker.celery_app worker --loglevel=info --uid=nobody --gid=nogroup
+    command: celery -A app.tasks.worker.celery_app worker --loglevel=info
     environment:
       APP_NAME: KTC KTS API Worker
       APP_ENV: production
@@ -93,6 +94,9 @@ services:
     depends_on:
       - postgres
       - redis
+      - api
+    volumes:
+      - api_storage_prod:/app/storage
 
   postgres:
     image: postgres:16-alpine

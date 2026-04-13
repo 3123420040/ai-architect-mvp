@@ -25,5 +25,6 @@ export NEXT_PUBLIC_APP_URL="${NEXT_PUBLIC_APP_URL:-https://kts.blackbirdzzzz.art
 export APP_CORS_ORIGINS="${APP_CORS_ORIGINS:-https://kts.blackbirdzzzz.art,http://localhost}"
 export PUBLIC_BASE_URL="${PUBLIC_BASE_URL:-https://kts.blackbirdzzzz.art}"
 export PUBLIC_HTTP_PORT="${PUBLIC_HTTP_PORT:-80}"
+export GPU_SERVICE_URL="${KTS_DEPLOY_GPU_SERVICE_URL:-http://gpu:8001}"
 
 docker compose -f "${ROOT_DIR}/docker-compose.production.yml" --profile public-edge up -d --build

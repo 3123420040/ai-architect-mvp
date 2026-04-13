@@ -66,7 +66,9 @@ Those are intentionally separated into the independent research brief:
 9. `implementation/phase-6/09-phase-6-checkpoint-execution-plan.md`
 10. `implementation/phase-6/10-phase-6-testing-release-and-acceptance-gates.md`
 11. `implementation/phase-6/11-phase-6-dev-readiness-checklist.md`
-12. `docs/phases/phase-6/checkpoints/README.md`
+12. `implementation/phase-6/13-phase-6-technical-design-detailed.md`
+13. `implementation/phase-6/14-phase-6-detailed-checkpoint-breakdown.md`
+14. `docs/phases/phase-6/checkpoints/README.md`
 
 Optional future-program reading only:
 
