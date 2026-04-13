@@ -1,0 +1,66 @@
+{
+  "project_type": "villa",
+  "project_mode": "new_build",
+  "lot": {
+    "width_m": 14.0,
+    "depth_m": 24.0,
+    "area_m2": 336.0,
+    "orientation": "southeast"
+  },
+  "floors": 2,
+  "rooms": {
+    "bedrooms": 4,
+    "bathrooms": 5
+  },
+  "household_profile": "Gia dinh 3 the he, co ong ba, bo me va 2 con nho",
+  "occupant_count": 6,
+  "lifestyle_priorities": [
+    "daylight_priority",
+    "ventilation_priority",
+    "elderly_friendly",
+    "family_with_kids"
+  ],
+  "style": "tropical_modern",
+  "material_direction": "Da tu nhien sang, go oak am, kim loai mau toi, son be va kem",
+  "color_direction": "Warm neutral + muted olive + stone beige",
+  "budget_vnd": 9500000000,
+  "timeline_months": 12,
+  "special_requests": [
+    "garden",
+    "garage",
+    "prayer_room",
+    "home_office"
+  ],
+  "space_requests": [
+    "Phong khach tran cao lien thong san vuon",
+    "Bep va ban an nhin ra vuon sau",
+    "Phong ngu ong ba o tang 1",
+    "Phong lam viec rieng cho chu nha",
+    "Tang 2 co sinh hoat chung nho"
+  ],
+  "spatial_preferences": [
+    "Cong cong va rieng tu tach ro",
+    "Luu thong truc quan tu sanh vao phong khach va bep",
+    "Mo nhieu huong nhin ra cay xanh"
+  ],
+  "design_goals": [
+    "Hien dai nhiet doi, sang trong tiet che",
+    "Thong gio xuyen phong",
+    "Noi that am ap, sang va thoang"
+  ],
+  "must_haves": [
+    "Phong ngu ong ba tang 1",
+    "Gara 2 xe",
+    "View vuon cho phong khach va bep",
+    "Mat tien hien dai va co chieu sau"
+  ],
+  "must_not_haves": [
+    "Khong gian toi va bi chia nho",
+    "Mat tien qua kin",
+    "Cau thang cat ngang phong khach"
+  ],
+  "notes": [
+    "Muc tieu la bo client-ready 3D de khach hang co the quyet nhanh concept",
+    "Can video walkthrough de mo phong trai nghiem den, vao va su dung khong gian"
+  ]
+}

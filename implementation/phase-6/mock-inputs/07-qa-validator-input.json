@@ -1,0 +1,30 @@
+{
+  "source_refs": {
+    "locked_brief_ref": "02-brief-lock-input.json",
+    "canonical_design_ref": "03-canonical-2d-design-input.json",
+    "scene_spec_ref": "05-presentation-scene-spec.json"
+  },
+  "mandatory_checks": [
+    "version_is_locked",
+    "required_rooms_rendered",
+    "facade_orientation_matches",
+    "opening_logic_not_missing",
+    "room_count_not_reduced",
+    "required_outputs_present",
+    "video_duration_in_range",
+    "render_resolution_meets_target",
+    "model_file_opens",
+    "manifest_complete"
+  ],
+  "tolerance_rules": {
+    "area_difference_percent_max": 5.0,
+    "camera_sequence_duration_tolerance_seconds": 3.0
+  },
+  "delivery_gate": {
+    "client_ready_requires": [
+      "all_mandatory_checks_pass",
+      "architect_approved",
+      "no_critical_degraded_flags"
+    ]
+  }
+}

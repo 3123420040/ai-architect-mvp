@@ -1,0 +1,52 @@
+{
+  "style_profile_id": "style-villa-tropical-modern-premium",
+  "style_family": "tropical_modern",
+  "architectural_language": {
+    "mass_ing": [
+      "Khoi ngang ro rang",
+      "Mai bang",
+      "Noi ngoai that lien mach"
+    ],
+    "facade_rules": [
+      "Dung lam che nang theo phuong ngang cho mat tien",
+      "Tang 1 mo hon tang 2",
+      "Giam bot kinh o khu rieng tu"
+    ]
+  },
+  "material_palette": {
+    "facade_primary": ["light_stone", "warm_offwhite_paint", "charcoal_metal"],
+    "interior_public": ["oak_wood", "light_beige_stone", "warm_textured_paint"],
+    "interior_private": ["oak_wood", "linen_fabric", "soft_beige_paint"],
+    "landscape": ["natural_grass", "low_canopy_tree", "textured_paver"]
+  },
+  "color_palette": {
+    "base": ["#E8DFCf", "#D8CCBB", "#F5F0E7"],
+    "accent": ["#6E6A55", "#4F3F31"],
+    "greenery_bias": "muted_olive"
+  },
+  "lighting_direction": {
+    "day_mode": "soft_warm_daylight",
+    "dusk_mode": "warm_interior_glow",
+    "shadow_intent": "co chieu sau, khong gay gat"
+  },
+  "staging_policy": {
+    "furniture_density": "premium_lived_in_medium",
+    "decor_density": "controlled",
+    "people_presence": "none",
+    "vehicle_presence": "one_neutral_suv_in_driveway"
+  },
+  "room_scene_rules": {
+    "living_room": {
+      "must_show": ["sofa_group", "garden_view", "double_height_feel"],
+      "must_avoid": ["overcrowded_decor", "too_dark_corner"]
+    },
+    "kitchen_dining": {
+      "must_show": ["kitchen_island", "dining_table", "backyard_connection"],
+      "must_avoid": ["restaurant_like_lighting"]
+    },
+    "master_bedroom": {
+      "must_show": ["calm_palette", "soft_textures", "balcony_connection"],
+      "must_avoid": ["cold_hotel_feel"]
+    }
+  }
+}

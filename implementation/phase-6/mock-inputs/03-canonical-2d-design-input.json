@@ -1,0 +1,107 @@
+{
+  "project_id": "mock-villa-thu-duc",
+  "version_id": "v2-locked-approved",
+  "revision_label": "B",
+  "status": "locked",
+  "issued_package": {
+    "package_id": "pkg-v2-client-issue",
+    "deliverable_preset": "client_presentation",
+    "issue_date": "2026-04-13",
+    "sheet_index": [
+      "COVER",
+      "SITE",
+      "L1-FLOOR-PLAN",
+      "L2-FLOOR-PLAN",
+      "ELEV-01",
+      "SECTION-01"
+    ]
+  },
+  "site": {
+    "boundary": [
+      [0.0, 0.0],
+      [14.0, 0.0],
+      [14.0, 24.0],
+      [0.0, 24.0]
+    ],
+    "orientation": "southeast",
+    "setbacks_m": {
+      "front": 4.0,
+      "back": 3.0,
+      "left": 2.0,
+      "right": 2.0
+    }
+  },
+  "levels": [
+    {
+      "id": "L1",
+      "name": "Tang 1",
+      "elevation_m": 0.0,
+      "floor_to_floor_m": 3.9
+    },
+    {
+      "id": "L2",
+      "name": "Tang 2",
+      "elevation_m": 3.9,
+      "floor_to_floor_m": 3.6
+    }
+  ],
+  "geometry_summary": {
+    "gross_floor_area_m2": 312.0,
+    "footprint_area_m2": 168.0,
+    "room_count": 12,
+    "opening_count": 31,
+    "facade_primary": "southeast"
+  },
+  "rooms": [
+    {
+      "id": "L1-living",
+      "name": "Phong khach",
+      "type": "living_room",
+      "level": "L1",
+      "area_m2": 38.5,
+      "adjacent_to": ["L1-foyer", "L1-dining", "L1-garden-terrace"]
+    },
+    {
+      "id": "L1-kitchen",
+      "name": "Bep",
+      "type": "kitchen",
+      "level": "L1",
+      "area_m2": 21.0,
+      "adjacent_to": ["L1-dining", "L1-service-yard"]
+    },
+    {
+      "id": "L1-grandparents",
+      "name": "Phong ngu ong ba",
+      "type": "bedroom",
+      "level": "L1",
+      "area_m2": 18.0,
+      "adjacent_to": ["L1-corridor", "L1-grandparents-bath"]
+    },
+    {
+      "id": "L2-master",
+      "name": "Phong ngu master",
+      "type": "master_bedroom",
+      "level": "L2",
+      "area_m2": 29.0,
+      "adjacent_to": ["L2-master-bath", "L2-balcony-front"]
+    }
+  ],
+  "stairs": [
+    {
+      "id": "main-stair",
+      "type": "u-shaped",
+      "from_level": "L1",
+      "to_level": "L2",
+      "position_zone": "center-right"
+    }
+  ],
+  "facade_logic": {
+    "primary_front": "southeast",
+    "design_intent": [
+      "Khoi chinh 2 tang ngang",
+      "Mai bang, parapet gon",
+      "Lam che nang mat tien",
+      "Cua kinh lon cho khu living va dining"
+    ]
+  }
+}

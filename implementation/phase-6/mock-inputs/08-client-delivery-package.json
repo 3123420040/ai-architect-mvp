@@ -1,0 +1,35 @@
+{
+  "package_type": "client_3d_presentation",
+  "project_ref": {
+    "project_id": "mock-villa-thu-duc",
+    "version_id": "v2-locked-approved",
+    "revision_label": "B"
+  },
+  "deliverables": {
+    "scene_url": "/media/projects/mock-villa-thu-duc/3d/scene.glb",
+    "render_urls": [
+      "/media/projects/mock-villa-thu-duc/3d/exterior_hero_day.png",
+      "/media/projects/mock-villa-thu-duc/3d/exterior_entry.png",
+      "/media/projects/mock-villa-thu-duc/3d/living_room.png",
+      "/media/projects/mock-villa-thu-duc/3d/kitchen_dining.png",
+      "/media/projects/mock-villa-thu-duc/3d/master_bedroom.png"
+    ],
+    "video_url": "/media/projects/mock-villa-thu-duc/3d/walkthrough.mp4",
+    "manifest_url": "/media/projects/mock-villa-thu-duc/3d/presentation_manifest.json"
+  },
+  "viewer": {
+    "enabled": true,
+    "share_mode": "tokenized_web_link",
+    "allow_client_camera_free_roam": false
+  },
+  "branding": {
+    "studio_name": "KTC KTS",
+    "accent_color": "#A66A3F",
+    "watermark_mode": "subtle_review"
+  },
+  "approval": {
+    "architect_approved": true,
+    "client_ready": true,
+    "qa_status": "pass"
+  }
+}

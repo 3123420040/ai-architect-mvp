@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "loop_number": 1,
+      "passed": true,
+      "duration_seconds": 15.22,
+      "project_id": "9261b19b-d209-4598-bc93-eba9519d4270",
+      "selected_version_id": "fa8be2cd-4396-4aa5-9779-9fe458ea7808",
+      "package_id": "20733967-2dd3-45df-87b7-6052a5fec13e",
+      "package_status": "issued",
+      "package_issue_date": "2026-04-13",
+      "share_token": "dOhxN0HiFFz5-TW-aDj45eSm",
+      "exported_pdf_url": "/media/projects/9261b19b-d209-4598-bc93-eba9519d4270/packages/20733967-2dd3-45df-87b7-6052a5fec13e/bundle/56e49b33-b516-4bb8-a06c-1f369ae06f72.pdf",
+      "exported_svg_url": "/media/projects/9261b19b-d209-4598-bc93-eba9519d4270/packages/20733967-2dd3-45df-87b7-6052a5fec13e/sheets/7672435d-d394-4793-ad6d-a3d53a8697c4.svg",
+      "exported_dxf_url": "/media/projects/9261b19b-d209-4598-bc93-eba9519d4270/packages/20733967-2dd3-45df-87b7-6052a5fec13e/bundle/e24470bc-5a5b-4d79-b7ba-ffb666fe697f.dxf",
+      "exported_ifc_url": "/media/projects/9261b19b-d209-4598-bc93-eba9519d4270/packages/20733967-2dd3-45df-87b7-6052a5fec13e/bundle/cc0ff105-83cf-49cc-8008-8c58cee84264.ifc",
+      "exported_manifest_url": "/media/projects/9261b19b-d209-4598-bc93-eba9519d4270/packages/20733967-2dd3-45df-87b7-6052a5fec13e/bundle/a4063cc7-a5b3-4a81-9fbb-709da5e72558.json",
+      "schedule_csv_urls": {
+        "door": "/media/projects/9261b19b-d209-4598-bc93-eba9519d4270/packages/20733967-2dd3-45df-87b7-6052a5fec13e/csv/8ebebde3-b5ad-475a-aeab-1d36b38b13d7.csv",
+        "window": "/media/projects/9261b19b-d209-4598-bc93-eba9519d4270/packages/20733967-2dd3-45df-87b7-6052a5fec13e/csv/c5439ee0-18b8-4129-ae0b-d3ddbfc1994b.csv",
+        "room": "/media/projects/9261b19b-d209-4598-bc93-eba9519d4270/packages/20733967-2dd3-45df-87b7-6052a5fec13e/csv/3aa93eec-836d-44ca-b742-09724918dfaf.csv"
+      },
+      "model_url": "/media/projects/9261b19b-d209-4598-bc93-eba9519d4270/models/c6744129-1572-414c-ad74-17a9c595f3f4.json",
+      "render_count": 2,
+      "notifications": 5,
+      "checked_at": "2026-04-13T16:02:30.997793+00:00"
+    }
+  ]
+}

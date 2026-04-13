@@ -1,0 +1,119 @@
+{
+  "scene_spec_version": "v1",
+  "project_ref": {
+    "project_id": "mock-villa-thu-duc",
+    "version_id": "v2-locked-approved",
+    "revision_label": "B"
+  },
+  "quality_tier": "client_presentation",
+  "building_scene": {
+    "scene_units": "meters",
+    "lod_profile": "presentation_medium",
+    "include_site_context": true,
+    "include_landscape": true,
+    "include_neighbor_mass": false
+  },
+  "geometry_refs": {
+    "source": "canonical_design_state",
+    "levels": ["L1", "L2"],
+    "required_room_ids": ["L1-living", "L1-kitchen", "L1-grandparents", "L2-master"],
+    "required_facade": "southeast"
+  },
+  "material_assignment": {
+    "facade": {
+      "wall_primary": "light_stone",
+      "wall_secondary": "warm_offwhite_paint",
+      "frame": "charcoal_metal"
+    },
+    "interior": {
+      "public_floor": "light_beige_stone",
+      "private_floor": "oak_wood",
+      "ceiling": "warm_textured_paint"
+    }
+  },
+  "lighting_setup": {
+    "default_mode": "day",
+    "sky_model": "clear_soft_day",
+    "interior_practical_lights": true
+  },
+  "staging": {
+    "living_room_profile": "premium_family_living",
+    "kitchen_profile": "clean_island_kitchen",
+    "master_bedroom_profile": "warm_private_suite",
+    "garden_profile": "minimal_tropical_residential"
+  },
+  "still_shots": [
+    {
+      "shot_id": "ext-hero-day",
+      "type": "exterior",
+      "camera_intent": "hero_front_corner",
+      "output_name": "exterior_hero_day.png"
+    },
+    {
+      "shot_id": "ext-entry",
+      "type": "exterior",
+      "camera_intent": "entry_sequence",
+      "output_name": "exterior_entry.png"
+    },
+    {
+      "shot_id": "living-main",
+      "type": "interior",
+      "room_id": "L1-living",
+      "camera_intent": "garden_connection_wide",
+      "output_name": "living_room.png"
+    },
+    {
+      "shot_id": "kitchen-dining-main",
+      "type": "interior",
+      "room_id": "L1-kitchen",
+      "camera_intent": "island_to_backyard",
+      "output_name": "kitchen_dining.png"
+    },
+    {
+      "shot_id": "master-main",
+      "type": "interior",
+      "room_id": "L2-master",
+      "camera_intent": "calm_suite_wide",
+      "output_name": "master_bedroom.png"
+    }
+  ],
+  "walkthrough_video": {
+    "enabled": true,
+    "output_name": "walkthrough.mp4",
+    "resolution": "1920x1080",
+    "fps": 30,
+    "duration_seconds": 70,
+    "sequence": [
+      {
+        "segment_id": "seg-01",
+        "camera_path": "front_approach",
+        "duration_seconds": 12
+      },
+      {
+        "segment_id": "seg-02",
+        "camera_path": "entry_to_living_reveal",
+        "duration_seconds": 14
+      },
+      {
+        "segment_id": "seg-03",
+        "camera_path": "living_to_dining_pan",
+        "duration_seconds": 14
+      },
+      {
+        "segment_id": "seg-04",
+        "camera_path": "stair_transition_to_master",
+        "duration_seconds": 14
+      },
+      {
+        "segment_id": "seg-05",
+        "camera_path": "master_to_balcony_outlook",
+        "duration_seconds": 16
+      }
+    ]
+  },
+  "delivery_flags": {
+    "viewer_enabled": true,
+    "client_share_enabled": true,
+    "watermark_mode": "client_review"
+  }
+}

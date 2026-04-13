@@ -1,0 +1,112 @@
+{
+  "project_context": {
+    "project_name": "Villa Vuon Thu Duc",
+    "project_type": "villa",
+    "project_mode": "new_build",
+    "target_presentation_tier": "client_presentation"
+  },
+  "client_profile": {
+    "primary_client_name": "Le Minh Anh",
+    "household_profile": "Gia dinh 3 the he gom ong ba, bo me va 2 con nho",
+    "occupant_count": 6,
+    "lifestyle_priorities": [
+      "daylight_priority",
+      "ventilation_priority",
+      "elderly_friendly",
+      "family_with_kids"
+    ]
+  },
+  "site_input": {
+    "lot_width_m": 14.0,
+    "lot_depth_m": 24.0,
+    "orientation": "southeast",
+    "site_area_m2": 336.0,
+    "frontage_condition": "Duong noi bo rong 10m",
+    "site_character": "Khu dan cu yen tinh, nhieu cay xanh"
+  },
+  "space_program": {
+    "floors": 2,
+    "rooms": {
+      "bedrooms": 4,
+      "bathrooms": 5
+    },
+    "special_requests": [
+      "garden",
+      "garage",
+      "prayer_room",
+      "home_office"
+    ],
+    "space_requests": [
+      "Phong khach tran cao lien thong san vuon",
+      "Bep va ban an nhin ra vuon sau",
+      "Phong ngu ong ba o tang 1",
+      "Phong lam viec yen tinh cho chu nha"
+    ],
+    "spatial_preferences": [
+      "Khong gian chung mo va thoang",
+      "Luu thong ro giua cong cong va rieng tu",
+      "Tang 2 co sinh hoat chung nho cho gia dinh"
+    ]
+  },
+  "design_direction": {
+    "style": "tropical_modern",
+    "design_goals": [
+      "Am ap, sang trong nhung khong phuong truong",
+      "Nhieu anh sang tu nhien",
+      "Thong gio xuyen phong",
+      "Gan ket noi that voi san vuon"
+    ],
+    "must_haves": [
+      "Mat tien dep va hien dai",
+      "Co san vuon va hien ngoai troi de tiep khach",
+      "Tang 1 thuan tien cho nguoi lon tuoi",
+      "Bep an co view ra cay xanh"
+    ],
+    "must_not_haves": [
+      "Mat tien qua kin",
+      "Khong gian noi that toi va bi chia cat",
+      "Cau thang chiem trung tam phong khach"
+    ]
+  },
+  "material_direction": {
+    "preferred_materials": [
+      "Da tu nhien mau sang",
+      "Go oak am",
+      "Son be va trang kem",
+      "Khung kim loai mau toi"
+    ],
+    "preferred_colors": [
+      "Warm neutral",
+      "Earthy beige",
+      "Muted olive"
+    ]
+  },
+  "business_constraints": {
+    "budget_vnd": 9500000000,
+    "timeline_months": 12,
+    "approval_goal": "Client muon nhin thay khong gian that truoc khi chot concept"
+  },
+  "presentation_goal": {
+    "need_3d_viewer": true,
+    "need_curated_render_set": true,
+    "need_walkthrough_video": true,
+    "video_priority": "Exterior + khong gian cong cong + phong ngu master"
+  },
+  "reference_images": [
+    {
+      "id": "ref-001",
+      "category": "facade",
+      "note": "Mat tien co lam che nang, khoang kinh lon nhung van rieng tu"
+    },
+    {
+      "id": "ref-002",
+      "category": "living_room",
+      "note": "Phong khach mo ra vuon, vat lieu am va nhiu texture tu nhien"
+    },
+    {
+      "id": "ref-003",
+      "category": "kitchen_dining",
+      "note": "Ban dao bep ket hop an uong, view san vuon sau"
+    }
+  ]
+}

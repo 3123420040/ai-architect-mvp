@@ -1,0 +1,57 @@
+{
+  "renderer": "blender_headless",
+  "engine_profile": "client_presentation_balanced",
+  "scene_spec_ref": "05-presentation-scene-spec.json",
+  "model_output": {
+    "format": "glb",
+    "include_materials": true,
+    "compress_meshes": true,
+    "target_max_size_mb": 50
+  },
+  "still_render_outputs": [
+    {
+      "output_name": "exterior_hero_day.png",
+      "resolution": "2560x1440",
+      "samples": 256,
+      "camera": "hero_front_corner"
+    },
+    {
+      "output_name": "exterior_entry.png",
+      "resolution": "2560x1440",
+      "samples": 256,
+      "camera": "entry_sequence"
+    },
+    {
+      "output_name": "living_room.png",
+      "resolution": "2560x1440",
+      "samples": 256,
+      "camera": "garden_connection_wide"
+    },
+    {
+      "output_name": "kitchen_dining.png",
+      "resolution": "2560x1440",
+      "samples": 256,
+      "camera": "island_to_backyard"
+    },
+    {
+      "output_name": "master_bedroom.png",
+      "resolution": "2560x1440",
+      "samples": 256,
+      "camera": "calm_suite_wide"
+    }
+  ],
+  "video_output": {
+    "enabled": true,
+    "format": "mp4",
+    "codec": "h264",
+    "resolution": "1920x1080",
+    "fps": 30,
+    "bitrate_mbps": 18,
+    "camera_sequence_ref": "walkthrough_video.sequence"
+  },
+  "degraded_policy": {
+    "allow_stills_without_video": true,
+    "allow_low_quality_preview": true,
+    "block_client_issue_if_video_missing": false
+  }
+}
