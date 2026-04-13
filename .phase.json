@@ -1,5 +1,5 @@
 {
-  "current": "phase-4",
+  "current": "phase-5",
   "phases": {
     "phase-1": {
       "name": "MVP Implementation Execution",
@@ -28,6 +28,13 @@
       "started": "2026-04-12",
       "checkpoints": 6,
       "summary": "Phase 4 upgrades the discovery flow from MVP chat/form intake to a market-grade AI clarification workflow with structured requirement locking, design-direction board, and Vietnamese-first UX."
+    },
+    "phase-5": {
+      "name": "Brief Lock, Chat-Only Clarification, and Decision Workspace Hardening",
+      "status": "ready_for_execution",
+      "started": "2026-04-12",
+      "checkpoints": 7,
+      "summary": "Phase 5 removes intake distraction around the AI conversation, adds a true brief-lock contract, corrects the generation-to-review state sequence, and rebuilds the Designs page into a decision workspace validated by production truth."
     }
   }
 }

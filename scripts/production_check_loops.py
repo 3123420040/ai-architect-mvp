@@ -223,12 +223,18 @@ def run_single_loop(loop_number: int, base_url: str, host_header: str | None) ->
         body={
             "brief_json": {
                 "project_type": "townhouse",
+                "project_mode": "new_build",
                 "lot": {"width_m": 5, "depth_m": 20, "orientation": "south"},
                 "floors": 4,
                 "style": "modern_minimalist",
                 "rooms": {"bedrooms": 4, "bathrooms": 4},
+                "household_profile": "Gia dinh 3 the he",
+                "occupant_count": 6,
                 "budget_vnd": 4_500_000_000,
+                "timeline_months": 8,
+                "design_goals": ["Hien dai am, nhieu anh sang tu nhien"],
                 "special_requests": ["garage", "balcony"],
+                "must_haves": ["gara o to", "phong tho", "lay sang tu nhien"],
             },
             "status": "confirmed",
         },
@@ -249,6 +255,7 @@ def run_single_loop(loop_number: int, base_url: str, host_header: str | None) ->
     assert chat["clarification_state"]["total_sections"] >= 6
     assert isinstance(chat["clarification_state"]["blocking_missing"], list)
     assert isinstance(chat["clarification_state"]["sections"], list)
+    assert chat["brief_contract_state"] == "reopened"
 
     trace("chat history")
     history = json_request(
@@ -258,6 +265,20 @@ def run_single_loop(loop_number: int, base_url: str, host_header: str | None) ->
         host_header=host_header,
     )
     assert len(history["messages"]) >= 2
+
+    trace("re-lock brief")
+    relocked = json_request(
+        base_url,
+        f"/api/v1/projects/{project_id}/brief",
+        method="PUT",
+        token=token,
+        host_header=host_header,
+        body={
+            "brief_json": {},
+            "status": "confirmed",
+        },
+    )
+    assert relocked["brief_contract_state"] == "locked"
 
     trace("generate")
     generation = json_request(
@@ -270,7 +291,20 @@ def run_single_loop(loop_number: int, base_url: str, host_header: str | None) ->
     )
     versions = generation["versions"]
     assert len(versions) == 3
+    assert versions[0]["option_title_vi"]
+    assert isinstance(versions[0]["fit_reasons"], list)
+    assert versions[0]["option_strategy_key"]
     selected_version_id = versions[0]["id"]
+
+    trace("project after generation")
+    generated_project = json_request(
+        base_url,
+        f"/api/v1/projects/{project_id}",
+        token=token,
+        host_header=host_header,
+    )
+    assert generated_project["status"] == "options_generated"
+    assert generated_project["brief_contract_state"] == "locked"
 
     trace("select version")
     select = json_request(
@@ -282,6 +316,7 @@ def run_single_loop(loop_number: int, base_url: str, host_header: str | None) ->
         body={"comment": "Best option for production loop"},
     )
     assert select["status"] == "under_review"
+    assert select["project_status"] == "under_review"
 
     trace("annotation")
     annotation = json_request(
