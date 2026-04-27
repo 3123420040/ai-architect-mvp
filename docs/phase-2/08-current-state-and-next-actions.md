@@ -9,6 +9,7 @@ related:
   - docs/phase-2/04-deferred-roadmap.md
   - docs/phase-2/05-prd-deliverables.md
   - docs/phase-2/07-local-git-verification-protocol.md
+  - docs/phase-2/09-github-account-migration.md
   - docs/phase-2/handoffs/ui-e2e-professional-deliverables/08-local-e2e-signoff.md
   - docs/phase-2/handoffs/sprint-4-final-bundle/
 ---
@@ -116,6 +117,19 @@ Repos:
 - Web: `/Users/nguyenquocthong/project/ai-architect/ai-architect-web`
 - Docs/compose: `/Users/nguyenquocthong/project/ai-architect/ai-architect-mvp`
 
+Canonical GitHub account after migration:
+
+- `3123420040`
+
+Canonical public remotes:
+
+- `https://github.com/3123420040/ai-architect-api`
+- `https://github.com/3123420040/ai-architect-web`
+- `https://github.com/3123420040/ai-architect-gpu`
+- `https://github.com/3123420040/ai-architect-mvp`
+
+See `docs/phase-2/09-github-account-migration.md` for remote policy.
+
 Accepted local commits:
 
 - API: `4dcbbe2 feat(deliverables): connect professional bundle product flow`
@@ -182,4 +196,3 @@ Start with:
 - `04-opencode-prompt.md`
 
 Do not start implementation without following the contract in that folder.
-
