@@ -1,17 +1,18 @@
 ---
 title: Sprint 3 Plan — AR + Cinematic Master Video
 phase: 2
-status: pending-pm-architect-acceptance
+status: accepted-local-first
 date: 2026-04-27
 owner: Dev/Test Agent
 track: Professional Deliverables
 depends_on:
   - docs/phase-2/sprint-reports/sprint-2.md
+  - docs/phase-2/07-local-git-verification-protocol.md
 ---
 
 # Sprint 3 Plan — AR + Cinematic Master Video
 
-No production implementation starts until the PO relays PM/Architect acceptance of this plan.
+Plan accepted by PO/PM-Architect. Implementation proceeds under the local-first verification protocol in `docs/phase-2/07-local-git-verification-protocol.md`.
 
 ## Context Ingestion
 
@@ -34,7 +35,7 @@ Locked constraints carried into Sprint 3:
 - No Sprint 3 code may introduce Specular-Glossiness or procedural material generation.
 - USDZ material names must match GLB material names exactly.
 - USDZ `model.usdz` must be the mobile-safe delivery artifact. If a richer full file is emitted, it is additive as `model_full.usdz`; default `model.usdz` is a copy of the budget-compliant lite variant.
-- CI must fail if USDZ or video gates fail; no partial Sprint 3 bundle is marked releasable.
+- Required verification gates must fail if USDZ or video gates fail; no partial Sprint 3 bundle is marked releasable.
 - Heavy production video rendering remains async-first through Celery. Demo CLI may run synchronously for developer convenience.
 - Audio is omitted in Sprint 3.
 
@@ -232,13 +233,13 @@ storage/professional-deliverables/project-golden-townhouse/
 | Camera path determinism | Render CI fast profile twice; compare duration and decoded frame hashes at t=0, t=30s, t=58s. |
 | Failure case | Empty/degenerate Sprint 2 scene must fail validation before writing releasable `model.usdz` or `master_4k.mp4`; unit test asserts failed gate state. |
 
-## CI Plan
+## Local-First Verification Plan
 
-Workflow: `.github/workflows/sprint3-deliverables.yml`
+Primary transport: local git + local Linux-equivalent verification per `07-local-git-verification-protocol.md`.
 
 Steps:
 
-1. Checkout PR branch.
+1. Checkout local implementation branch.
 2. Install Python dependencies plus `usd-core==26.5`.
 3. Install Node Sprint 2 tools if GLB inspection is needed.
 4. Install Blender 4.5.1 LTS.
@@ -246,14 +247,19 @@ Steps:
 6. Install `ffmpeg`.
 7. Run focused Sprint 1/2/3 professional deliverables tests.
 8. Run `make sprint3-ci`.
-9. Upload `sprint3_gate_summary.{json,md}`, USDZ reports, video ffprobe report, determinism report.
-10. Post sticky Sprint 3 PR comment using the existing gate summary format.
+9. Preserve `sprint3_gate_summary.{json,md}`, USDZ reports, video ffprobe report, determinism report.
+10. Record branch, local commit hash, dirty status, command logs, tool versions, and gate summary paths in `docs/phase-2/sprint-reports/sprint-3.md`.
 
-Expected CI behavior:
+Optional remote transport:
 
-- CI renders the 4K master with the fast deterministic profile.
+- `.github/workflows/sprint3-deliverables.yml` may still be used if free GitHub Actions or another remote runner is available.
+- Remote PR comments are optional and are not required for acceptance.
+
+Expected verification behavior:
+
+- The verification run renders the 4K master with the fast deterministic profile.
 - Production async jobs use the GPU/Cycles preset.
-- If CI render time threatens GitHub's limit, reduce renderer samples/material preview complexity first. Do not reduce the final CI video format below 4K@30 for the gate artifact.
+- If verification time threatens the local runner budget, reduce renderer samples/material preview complexity first. Do not reduce the final verification video format below 4K@30 for the gate artifact.
 
 ## Implementation Slices
 

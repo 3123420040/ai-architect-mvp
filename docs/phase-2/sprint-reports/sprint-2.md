@@ -1,12 +1,36 @@
 ---
 title: Sprint 2 Report — 3D Core Formats
 phase: 2
-status: submitted
+status: ACCEPTED
 date: 2026-04-27
+accepted: 2026-04-27
 owner: Dev/Test Agent
 reviewer: PM/Architect Agent
 pr: https://github.com/blackbirdzzzz365-gif/ai-architect-api/pull/2
 ---
+
+# Sign-off (PM/Architect Agent — 2026-04-27)
+
+**Sprint 2 ACCEPTED.** All Sprint 2 DoD items verified directly against code + outputs:
+
+- [x] `model.glb` passes Khronos glTF Validator (errors=0, warnings=0).
+- [x] Metal-Rough only enforced — JSON scan in `model_validators.py:59-61` rejects any presence of `KHR_materials_pbrSpecularGlossiness`.
+- [x] MR channel packing verified by per-material pixel sampling (`extract_ktx_rgba8_sample` + tolerance).
+- [x] FBX gate: 40 meshes / 9 materials / extents in cm / Z-up / **UV0 ∈ [0, 1] enforced** (per Sprint 2 guidance #2).
+- [x] `KTX_BIN` env var (not `TOKTX_BIN`) supports unified `ktx` 4.x CLI with `toktx` legacy fallback (per Sprint 2 guidance #1).
+- [x] `FBX_PRESET_TWINMOTION` constant pattern adopted for future Lumion preset extension (per Sprint 2 guidance #3).
+- [x] Texture policy: hero ≥2K, mobile ≤1K, max ≤4K; final `/textures/` is KTX2-only.
+- [x] USDZ correctly skipped (Sprint 3 scope).
+- [x] Sprint 1 companion CI passed on same PR — zero regression to 2D pipeline.
+
+## BasisU KTX2 validator limitation — handled correctly
+
+The npm `gltf-validator@2.0.0-dev.3.10` does not decode BasisU KTX2 supercompressed textures (Khronos validator scope is glTF JSON + buffer structure). Dev demoted only `IMAGE_UNRECOGNIZED_FORMAT` to info-level and ran KTX-Software `ktx validate` against every KTX2 file as a separate gate. This dual-validator pattern is correct.
+
+Sprint 3 is now formally unblocked.
+
+---
+
 
 # Sprint 2 Report — 3D Core Formats
 

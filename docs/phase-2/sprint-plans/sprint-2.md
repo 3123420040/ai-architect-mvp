@@ -1,7 +1,7 @@
 ---
 title: Sprint 2 Plan — 3D Core Formats
 phase: 2
-status: pending-pm-architect-acceptance
+status: accepted
 date: 2026-04-27
 owner: Dev/Test Agent
 track: Professional Deliverables
@@ -11,7 +11,7 @@ depends_on:
 
 # Sprint 2 Plan — 3D Core Formats
 
-No production implementation starts until the PO relays PM/Architect acceptance of this plan.
+Plan accepted and Sprint 2 completed. This file is retained as historical implementation scope.
 
 ## Context Ingestion
 
@@ -242,4 +242,3 @@ Formal question file:
 - `docs/phase-2/questions-from-dev/sprint-2-material-library-scope.md`
 
 This is non-blocking for plan acceptance if PM/Architect agrees the golden fixture material set is enough for Sprint 2 DoD. If unanswered within 24 hours, I will implement a deterministic material registry sufficient for the golden fixture plus a schema that can scale to the later ~50-material curated pack, without committing external Quixel/Polyhaven assets in Sprint 2.
-
