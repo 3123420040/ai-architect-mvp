@@ -12,8 +12,8 @@
       "name": "Geometry Layer 2 & Full Deliverable Expansion",
       "status": "baseline_completed",
       "started": "2026-04-12",
-      "checkpoints": 7,
-      "summary": "Phase 2 expands the product from schematic package outputs to design development deliverables with Layer 2 geometry, schedules, DXF, IFC foundation, and integration QA."
+      "checkpoints": 14,
+      "summary": "Phase 2 expands the product from schematic package outputs to design development deliverables with Layer 2 geometry, schedules, DXF, IFC foundation, integration QA, and AI concept 2D style intelligence."
     },
     "phase-3": {
       "name": "Package-Centric Design Development Hardening",
