@@ -56,3 +56,16 @@ Decision: ACCEPTED.
 
 Rationale: Local Docker product E2E successfully generated Phase 2 bundle from a real generated/locked DesignVersion.geometry_json. All required non-DWG outputs were produced and registered. DWG skip is accepted because ODA is unavailable locally.
 
+## 2026-04-27 - Remediation Defaults Approved
+
+Decision: use the remediation recommendations from `11-remediation-execution-playbook.md` as approved implementation defaults.
+
+Approved defaults:
+
+- Asset access: use API proxy or presigned URL helper. Do not rely on raw private MinIO URLs. Do not use public MinIO bucket as the product default.
+- Partial artifacts: allow download of generated artifacts from failed/partial bundles when the individual artifact is valid. Label them clearly as `Partial / not final`.
+- Viewer: allow the Viewer to display a professional deliverables GLB from a failed/partial bundle when the GLB itself is valid. Show a warning that the bundle is not final.
+- Current version: latest `locked` version is the source of truth for the current approved version. All Designs, Review, Delivery, and Viewer pages must use the same rule.
+- Intake: fix the deterministic parser first for known Vietnamese natural-language failures. Do not require real LLM extraction in this remediation unless a later PM decision explicitly changes scope.
+
+Rationale: These defaults keep the remediation local-first, avoid broadening scope, preserve observability for partially generated evidence, and prioritize a correct product state model before deeper AI/NLU expansion.
