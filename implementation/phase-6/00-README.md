@@ -68,7 +68,8 @@ Those are intentionally separated into the independent research brief:
 11. `implementation/phase-6/11-phase-6-dev-readiness-checklist.md`
 12. `implementation/phase-6/13-phase-6-technical-design-detailed.md`
 13. `implementation/phase-6/14-phase-6-detailed-checkpoint-breakdown.md`
-14. `docs/phases/phase-6/checkpoints/README.md`
+14. `implementation/phase-6/15-phase-6-gpu-node-hardening-checklist.md`
+15. `docs/phases/phase-6/checkpoints/README.md`
 
 Optional future-program reading only:
 
