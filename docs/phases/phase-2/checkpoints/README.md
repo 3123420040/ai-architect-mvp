@@ -13,6 +13,7 @@ Phase 2 is locked to [implementation/11-phase2-layer2-full-deliverable.md](/User
 | 4 | `cp4-dxf-export` | DXF Export | `cp3-schedules` | Model space + paper space DXF package with title blocks and layers |
 | 5 | `cp5-ifc-foundation` | IFC Foundation | `cp4-dxf-export` | Basic IFC handoff from the same canonical geometry |
 | 6 | `cp6-integration-qa` | Integration + QA | `cp5-ifc-foundation` | Unified export package, production verification, loop validation |
+| 7 | `cp7-pascal-editor-integration` | Pascal Editor Integration | `cp1-geometry-layer2`, `cp6-integration-qa` (soft) | Vendor Pascal editor, adapter geometry Layer 2 ↔ scene, replace 3D viewer, mo KTS edit mode |
 
 ## Notes
 
