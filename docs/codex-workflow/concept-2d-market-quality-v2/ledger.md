@@ -7,10 +7,10 @@ Status: bootstrap complete
 | Session | Branch/Worktree | Current Status | Last Decision | Next Action |
 |---|---|---|---|---|
 | C2DQ0 Bootstrap/Worktrees | docs `main` | completed | PASS | launch C2DQ1 |
-| C2DQ1 Acceptance Rubric And Case Matrix | `codex/concept-2d-market-rubric` / mvp worktree | completed | PASS | merge docs and launch C2DQ2-C2DQ4 |
-| C2DQ2 Spatial Planning Quality | `codex/concept-2d-market-spatial` / API worktree | not started | pending | launch after C2DQ1 accepted |
-| C2DQ3 Drawing Craft And Readability | `codex/concept-2d-market-craft` / API worktree | not started | pending | launch after C2DQ1 accepted |
-| C2DQ4 Style And Facade Expression | `codex/concept-2d-market-style` / API worktree | not started | pending | launch after C2DQ1 accepted |
+| C2DQ1 Acceptance Rubric And Case Matrix | `codex/concept-2d-market-rubric` / mvp worktree | merged | PASS | launch C2DQ2-C2DQ4 |
+| C2DQ2 Spatial Planning Quality | `codex/concept-2d-market-spatial` / API worktree | ready | pending | launch now |
+| C2DQ3 Drawing Craft And Readability | `codex/concept-2d-market-craft` / API worktree | ready | pending | launch now |
+| C2DQ4 Style And Facade Expression | `codex/concept-2d-market-style` / API worktree | ready | pending | launch now |
 | C2DQ5 Client Revision Truth Loop | `codex/concept-2d-market-revision` / API worktree | not started | pending | launch after C2DQ2-C2DQ4 accepted |
 | C2DQ6 Integrated Closeout Acceptance | `codex/concept-2d-market-closeout` / API worktree | not started | pending | launch after all accepted slices merge |
 
@@ -102,8 +102,8 @@ Residual risk:
   docs only
 
 Integrator decision:
-- Accepted and merged: pending
-- Merge commit: pending
+- Accepted and merged: yes
+- Merge commit: `e973f54 merge: accept concept 2d market rubric`
 
 Next action:
 - After review/merge, launch C2DQ2, C2DQ3, and C2DQ4 in parallel.
