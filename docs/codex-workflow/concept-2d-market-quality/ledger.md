@@ -9,11 +9,11 @@ pasted back to the integrator, then recorded here with the integrator decision.
 
 | Session | Branch/Worktree | Current Status | Last Decision | Next Action |
 |---|---|---|---|---|
-| C2D0 Bootstrap/Worktrees | docs main at `/Users/nguyenquocthong/project/ai-architect/ai-architect-mvp` | accepted | scaffold and worktrees created | C2D1/C2D2 accepted; launch C2D3 after worktree sync from API `main` |
+| C2D0 Bootstrap/Worktrees | docs main at `/Users/nguyenquocthong/project/ai-architect/ai-architect-mvp` | accepted | scaffold and worktrees created | C2D1/C2D2/C2D3 accepted; launch C2D4 after worktree sync from API `main` |
 | C2D1 Input Style Contract | `codex/concept-2d-input-style` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-input-style` | accepted | PASS / merged | complete; merge commit `f967316` |
 | C2D2 Spatial Layout Quality | `codex/concept-2d-layout-quality` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-layout-quality` | accepted | PASS / merged | complete; merge commit `e8ebb3c` |
-| C2D3 Drawing Craft Render QA | `codex/concept-2d-render-qa` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-render-qa` | ready | pending | sync from API `main`, then launch |
-| C2D4 Client Review Revision Loop | `codex/concept-2d-review-loop` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-review-loop` | gated | pending | launch after C2D2/C2D3 integration |
+| C2D3 Drawing Craft Render QA | `codex/concept-2d-render-qa` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-render-qa` | accepted | PASS / merged | complete; merge commit `af63dec` |
+| C2D4 Client Review Revision Loop | `codex/concept-2d-review-loop` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-review-loop` | ready | pending | sync from API `main`, then launch |
 | C2D5 Closeout Acceptance | `codex/concept-2d-closeout` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-closeout` | gated | pending | start only after accepted slices are integrated into API `main` |
 
 ## Intake Rules
@@ -151,3 +151,61 @@ Integrator decision:
 
 Next action:
 - Launch C2D3 after its worktree merges current API `main`.
+
+## 2026-04-29 08:06 +07 - C2D3 Drawing Craft Render QA
+
+Raw report source:
+- pasted by user into integrator thread.
+
+Session decision:
+- PASS
+
+Integrator assessment:
+- ACCEPT_FOR_INTEGRATION
+
+Changed files:
+- `app/services/design_intelligence/drawing_package_model.py`
+- `app/services/design_intelligence/concept_drawing_qa.py`
+- `app/services/professional_deliverables/concept_pdf_generator.py`
+- `app/services/professional_deliverables/pdf_generator.py`
+- `app/services/professional_deliverables/dxf_exporter.py`
+- `app/services/professional_deliverables/drawing_quality_gates.py`
+- `tests/professional_deliverables/test_concept_2d_package.py`
+
+Verification evidence:
+- Commands:
+  - worktree sync: `git merge --no-edit main`
+  - `PYTHONPATH=. /Users/nguyenquocthong/project/ai-architect/ai-architect-api/.venv/bin/python -m py_compile app/services/design_intelligence/drawing_package_model.py app/services/design_intelligence/concept_drawing_qa.py app/services/professional_deliverables/concept_pdf_generator.py app/services/professional_deliverables/pdf_generator.py app/services/professional_deliverables/dxf_exporter.py app/services/professional_deliverables/drawing_quality_gates.py`
+  - `PYTHONPATH=. /Users/nguyenquocthong/project/ai-architect/ai-architect-api/.venv/bin/python -m pytest tests/professional_deliverables/test_concept_2d_package.py -q`
+  - `PYTHONPATH=. /Users/nguyenquocthong/project/ai-architect/ai-architect-api/.venv/bin/python -m pytest tests/professional_deliverables/test_ai_concept_2d_e2e.py tests/professional_deliverables/test_output_quality_2d.py tests/professional_deliverables/test_dxf_pdf_gates.py -q`
+  - integrated API `main`: `PYTHONPATH=. .venv/bin/python -m pytest tests/professional_deliverables/test_concept_2d_package.py tests/professional_deliverables/test_ai_concept_2d_e2e.py tests/professional_deliverables/test_output_quality_2d.py tests/professional_deliverables/test_dxf_pdf_gates.py -q`
+  - integrated API `main`: `PYTHONPATH=. .venv/bin/python -m pytest tests/professional_deliverables -q`
+- Focused tests:
+  - C2D3 worktree package tests after integrator fix: 5 passed.
+  - C2D3 worktree concept/output/gate regression: 16 passed.
+  - Integrated API `main` focused rerun: 21 passed.
+  - Integrated API `main` professional deliverables regression: 68 passed, 2 skipped.
+- Main rerun:
+  - Focused and full professional-deliverables reruns passed after merge.
+- Gaps:
+  - Docker parity and final generated artifact closeout remain C2D5 gates.
+  - C2D3 artifact evidence is advisory by workflow policy.
+- Manual render evidence, if applicable:
+  - `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-render-qa/.artifacts/c2d3-render-qa-20260429/summary.json`
+  - Cases inspected: `7x25-modern-tropical`, `5x20-minimal-warm`, `apartment-indochine-descriptor`.
+  - Summary reported 10/10/8 PDF pages, 10/10/8 DXF sheets, physical/package gates passing, and nonblank page samples.
+  - Integrator visually inspected representative PNG page samples.
+
+Residual risk:
+- Flakes: none observed.
+- Known gaps: output is stronger concept-review drawing craft, but final market-quality acceptance still depends on C2D4 review-loop behavior and C2D5 integrated artifact rerun.
+
+Integrator decision:
+- Accepted and merged.
+- Worker commit: `007d2af`.
+- Integrator fix commit: `ff9315b` to enforce unique sheet titles in `CONCEPT_SHEET_IDENTIFIERS`.
+- Merge commit: `af63dec`.
+- Rework prompt, if any: none.
+
+Next action:
+- Launch C2D4 after its worktree merges current API `main`.
