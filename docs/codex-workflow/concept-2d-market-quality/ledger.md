@@ -9,12 +9,12 @@ pasted back to the integrator, then recorded here with the integrator decision.
 
 | Session | Branch/Worktree | Current Status | Last Decision | Next Action |
 |---|---|---|---|---|
-| C2D0 Bootstrap/Worktrees | docs main at `/Users/nguyenquocthong/project/ai-architect/ai-architect-mvp` | accepted | scaffold and worktrees created | C2D1/C2D2/C2D3 accepted; launch C2D4 after worktree sync from API `main` |
+| C2D0 Bootstrap/Worktrees | docs main at `/Users/nguyenquocthong/project/ai-architect/ai-architect-mvp` | accepted | scaffold and worktrees created | C2D1/C2D2/C2D3/C2D4 accepted; launch C2D5 after worktree sync from API `main` |
 | C2D1 Input Style Contract | `codex/concept-2d-input-style` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-input-style` | accepted | PASS / merged | complete; merge commit `f967316` |
 | C2D2 Spatial Layout Quality | `codex/concept-2d-layout-quality` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-layout-quality` | accepted | PASS / merged | complete; merge commit `e8ebb3c` |
 | C2D3 Drawing Craft Render QA | `codex/concept-2d-render-qa` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-render-qa` | accepted | PASS / merged | complete; merge commit `af63dec` |
-| C2D4 Client Review Revision Loop | `codex/concept-2d-review-loop` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-review-loop` | ready | pending | sync from API `main`, then launch |
-| C2D5 Closeout Acceptance | `codex/concept-2d-closeout` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-closeout` | gated | pending | start only after accepted slices are integrated into API `main` |
+| C2D4 Client Review Revision Loop | `codex/concept-2d-review-loop` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-review-loop` | accepted | PASS / merged | complete; merge commit `285ca49` |
+| C2D5 Closeout Acceptance | `codex/concept-2d-closeout` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-closeout` | ready | pending | sync from API `main`, then run closeout |
 
 ## Intake Rules
 
@@ -209,3 +209,56 @@ Integrator decision:
 
 Next action:
 - Launch C2D4 after its worktree merges current API `main`.
+
+## 2026-04-29 11:47 +07 - C2D4 Client Review Revision Loop
+
+Raw report source:
+- pasted by user into integrator thread.
+
+Session decision:
+- PASS
+
+Integrator assessment:
+- ACCEPT_FOR_INTEGRATION
+
+Changed files:
+- `app/services/design_intelligence/revision_interpreter.py`
+- `app/services/design_intelligence/concept_revision.py`
+- `tests/test_concept_revision_loop.py`
+
+Verification evidence:
+- Commands:
+  - `PYTHONPATH=. /Users/nguyenquocthong/project/ai-architect/ai-architect-api/.venv/bin/python -m py_compile app/services/design_intelligence/revision_interpreter.py app/services/design_intelligence/concept_revision.py`
+  - `PYTHONPATH=. /Users/nguyenquocthong/project/ai-architect/ai-architect-api/.venv/bin/python -m pytest tests/test_concept_revision_loop.py -q`
+  - `PYTHONPATH=. /Users/nguyenquocthong/project/ai-architect/ai-architect-api/.venv/bin/python -m pytest tests/professional_deliverables/test_ai_concept_2d_e2e.py -q`
+  - `PYTHONPATH=. /Users/nguyenquocthong/project/ai-architect/ai-architect-api/.venv/bin/python -m pytest tests/test_concept_model_contract.py tests/test_concept_layout_generator.py tests/professional_deliverables/test_concept_2d_package.py -q`
+  - `git diff --check main...codex/concept-2d-review-loop`
+  - contract smoke for `RevisionOperation.as_dict()` fields and optional `reference_image_descriptors` handling.
+  - integrated API `main`: `PYTHONPATH=. .venv/bin/python -m pytest tests/test_concept_revision_loop.py tests/professional_deliverables/test_ai_concept_2d_e2e.py tests/test_concept_model_contract.py tests/test_concept_layout_generator.py tests/professional_deliverables/test_concept_2d_package.py -q`
+  - integrated API `main`: `PYTHONPATH=. .venv/bin/python -m pytest tests/professional_deliverables -q`
+- Focused tests:
+  - C2D4 worktree revision tests: 8 passed.
+  - C2D4 worktree concept E2E tests: 4 passed.
+  - C2D4 worktree concept model/layout/package regression: 15 passed.
+  - Integrated API `main` focused rerun: 27 passed.
+  - Integrated API `main` professional deliverables regression: 68 passed, 2 skipped.
+- Main rerun:
+  - Focused and full professional-deliverables reruns passed after merge.
+- Gaps:
+  - Full automatic layout replanning for moved-room preferences remains deferred by design; C2D4 records bounded revision intent for later regeneration.
+  - Docker parity and final rendered artifact evidence remain C2D5 gates.
+- Manual render evidence, if applicable:
+  - Not applicable for C2D4; rendering is validated through E2E/package regression and C2D5 closeout will rerun manual render cases from integrated API `main`.
+
+Residual risk:
+- Flakes: none observed.
+- Known gaps: real image analysis remains out of scope; reference images are structured descriptors only.
+
+Integrator decision:
+- Accepted and merged.
+- Worker commit: `9f79a33`.
+- Merge commit: `285ca49`.
+- Rework prompt, if any: none.
+
+Next action:
+- Launch C2D5 after its worktree merges current API `main`.
