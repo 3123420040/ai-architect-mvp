@@ -1,6 +1,6 @@
 # Concept 2D Market Quality V2 Session Report Intake And Decision Log
 
-Status: C2DQ2-C2DQ4 integrated; ready to launch C2DQ5
+Status: C2DQ5 integrated; ready to launch C2DQ6 closeout
 
 ## Status Board
 
@@ -11,12 +11,12 @@ Status: C2DQ2-C2DQ4 integrated; ready to launch C2DQ5
 | C2DQ2 Spatial Planning Quality | `codex/concept-2d-market-spatial` / API worktree | merged | PASS | launch C2DQ5 |
 | C2DQ3 Drawing Craft And Readability | `codex/concept-2d-market-craft` / API worktree | merged | PASS | launch C2DQ5 |
 | C2DQ4 Style And Facade Expression | `codex/concept-2d-market-style` / API worktree | merged | PASS | launch C2DQ5 |
-| C2DQ5 Client Revision Truth Loop | `codex/concept-2d-market-revision` / API worktree | ready | pending | launch now |
-| C2DQ6 Integrated Closeout Acceptance | `codex/concept-2d-market-closeout` / API worktree | not started | pending | launch after all accepted slices merge |
+| C2DQ5 Client Revision Truth Loop | `codex/concept-2d-market-revision` / API worktree | merged | PASS | launch C2DQ6 |
+| C2DQ6 Integrated Closeout Acceptance | `codex/concept-2d-market-closeout` / API worktree | ready | pending | launch now |
 
 ## Current Baseline
 
-- API pushed baseline: `e273bb1`
+- API pushed baseline: `1f66b68`
 - Web pushed baseline: `4906e71`
 - Docs pushed baseline: `3cb344e`
 - Fresh flow acceptance: PASS
@@ -189,6 +189,81 @@ Integrator decision:
 
 Next action:
 - Launch C2DQ5 using `session-prompts/c2dq5-client-revision-truth-loop.prompt.md`.
+
+## 2026-04-30 02:50 +07 - C2DQ5 Integration
+
+Raw report source:
+- user-pasted PASS report for C2DQ5
+
+Session decision:
+- C2DQ5 Client Revision Truth Loop: PASS
+
+Integrator assessment:
+- ACCEPTED
+
+Worker commit:
+- `285582a feat(concept-2d): improve market revision loop`
+
+API merge commit:
+- `1f66b68 merge: accept concept 2d market revision loop`
+
+Changed areas:
+- `app/services/design_intelligence/revision_interpreter.py`
+- `app/services/design_intelligence/concept_revision.py`
+- `app/services/design_intelligence/drawing_package_model.py`
+- `app/services/professional_deliverables/concept_pdf_generator.py`
+- `tests/test_concept_revision_loop.py`
+- `tests/professional_deliverables/test_ai_concept_2d_e2e.py`
+
+Verification evidence:
+- Worker/integrator focused revision suite:
+  - `PYTHONPATH=. /Users/nguyenquocthong/project/ai-architect/ai-architect-api/.venv/bin/python -m pytest tests/test_concept_revision_loop.py tests/professional_deliverables/test_ai_concept_2d_e2e.py tests/test_concept_model_contract.py tests/test_concept_layout_generator.py tests/professional_deliverables/test_concept_2d_package.py -q`
+  - Result: `42 passed`
+- Integrated prompt-required commands on API `main`:
+  - `PYTHONPATH=. .venv/bin/python -m pytest tests/test_concept_revision_loop.py -q`
+  - Result: `10 passed`
+  - `PYTHONPATH=. .venv/bin/python -m pytest tests/professional_deliverables/test_ai_concept_2d_e2e.py -q`
+  - Result: `6 passed`
+  - `PYTHONPATH=. .venv/bin/python -m pytest tests/test_concept_model_contract.py tests/test_concept_layout_generator.py tests/professional_deliverables/test_concept_2d_package.py -q`
+  - Result: `26 passed`
+- API professional deliverables:
+  - `PYTHONPATH=. .venv/bin/python -m pytest tests/professional_deliverables -q`
+  - Result: `91 passed, 2 skipped`
+- API foundation/flows/briefing:
+  - `PYTHONPATH=. .venv/bin/python -m pytest tests/test_foundation.py tests/test_flows.py tests/test_briefing.py -q`
+  - Result: `21 passed`
+- Linux parity:
+  - `make sprint3-ci-linux`
+  - Result: PASS; container suite ended with `93 passed`
+- Static checks:
+  - `git diff --check`: PASS
+
+Revision evidence:
+- Natural-language feedback: kitchen/dining enlargement, secondary bedroom
+  tradeoff, entry/bedroom storage, room priorities, and style changes are
+  interpreted as bounded revision operations
+- Reference descriptors: treated as homeowner style hints only, with provenance;
+  no measured real-image analysis claim is made
+- Original requirement preservation: lot geometry, floors, bedroom count,
+  source brief, assumptions, and concept-only status remain traceable
+- Regeneration metadata: child version id, parent version id, changed fields,
+  changelog, preserved fields, and `construction_ready=false` are recorded
+- Ambiguity handling: unclear feedback asks a plain-language clarification
+  instead of making destructive layout changes
+- Unsafe-scope handling: construction, permit, MEP, and legal requests remain
+  blocked as concept-only
+
+Residual risk:
+- Flakes: none observed
+- Known gaps: C2DQ6 still owns the integrated 20-case browser/artifact closeout
+  truth run
+
+Integrator decision:
+- Accepted and merged: yes
+- API pushed baseline after integration: `1f66b68`
+
+Next action:
+- Launch C2DQ6 using `session-prompts/c2dq6-integrated-closeout-acceptance.prompt.md`.
 
 ## Intake Template
 
