@@ -1,6 +1,6 @@
 # Concept 2D Live Product Integration Session Report Intake And Decision Log
 
-Status: ready for integrator launch
+Status: closed - PASS
 
 ## Baseline Finding
 
@@ -28,7 +28,7 @@ Live local Docker review page check:
 | C2DL2 Professional Deliverables Wiring | `codex/concept-2d-live-deliverables` | accepted and merged | PASS | Complete |
 | C2DL3 Review and Delivery UI Exposure | `codex/concept-2d-live-ui` | accepted and merged | PASS | Complete |
 | C2DL4 Evidence and Backward Compatibility | `codex/concept-2d-live-evidence` | accepted and merged | PASS | Complete |
-| C2DL5 Closeout Acceptance | `codex/concept-2d-live-closeout` | ready to launch | pending | Launch closeout on integrated API/Web main |
+| C2DL5 Closeout Acceptance | integrated local `main` | accepted and closed | PASS | Complete |
 
 ## Intake Template
 
@@ -257,3 +257,52 @@ Integrator decision:
 
 Next action:
 - Launch `C2DL5 Closeout Acceptance` on integrated API/Web/Docs `main`.
+
+## 2026-04-29 15:50 +07 - C2DL5 Closeout Acceptance
+
+Raw report source:
+- pasted by user:
+
+Session decision:
+- PASS
+
+Integrator assessment:
+- ACCEPT_FOR_INTEGRATION
+
+Changed files:
+- `docs/codex-workflow/concept-2d-live-integration/closeout-report.md`
+
+Verification evidence:
+- Closeout commands:
+  - `PYTHONPATH=. .venv/bin/python -m pytest tests/professional_deliverables -q` -> 74 passed, 2 skipped
+  - `PYTHONPATH=. .venv/bin/python -m pytest tests/test_foundation.py tests/test_flows.py -q` -> 15 passed
+  - `make sprint3-ci-linux` -> passed; parity container reported 76 passed in both Sprint 2 and Sprint 3 suites
+  - `pnpm lint` -> 0 errors, 5 existing warnings
+  - `pnpm build` -> passed
+  - `docker compose -f docker-compose.local.yml up -d --build` -> passed
+- Manual/live evidence:
+  - Project `56e4c77f-5f46-4506-af8c-df88362aad34`
+  - Version `5e6b84dd-5e4c-419d-a00a-b4f9b54918ee`
+  - Bundle `51884d82-7ca8-4166-93b7-e8a63f66a495`
+  - Job `06138f8b-ba35-4bf3-b4ec-34d1ca6fd16d`
+  - PDF URL returned HTTP 200 with `content-type: application/pdf`
+  - PDF page count: 11
+  - PDF tokens present: `A-000`, `A-601`, `A-602`, `A-901`, `Professional Concept 2D Package`, `5.00 m`, `20.00 m`
+  - Stale labels absent: `Ranh đất 5 m x 15 m`, `Ranh dat 5 m x 15 m`
+  - Quality report metadata: `concept_package.enabled=true`, `readiness=ready`, `sheet_count=11`, `fallback_reason=null`, `qa_bounds.lot_width_m=5.0`, `qa_bounds.lot_depth_m=20.0`
+  - Review and Delivery UI expose PDF, all 11 DXF sheet links, quality reports, status, and DWG skip warning according to closeout report.
+- Integrator sanity check:
+  - `docker compose -f docker-compose.local.yml ps` confirmed API/Web/workers are running.
+  - Re-fetched PDF through `localhost:18000` and confirmed 11 pages and expected concept tokens.
+  - Re-fetched quality JSON through `localhost:18000` and confirmed ready concept package metadata.
+
+Residual risk:
+- Local DWG clean-open remains skipped because ODA/DWG converter is unavailable; this is explicit and does not block Concept 2D readiness.
+- Web console had non-blocking Presentation 3D 404/hydration warnings in closeout evidence; required Concept 2D content still rendered.
+
+Integrator decision:
+- Accepted and closed
+- Docs closeout commit: `efaa9e6`
+
+Next action:
+- Phase complete. User can test the live review page locally and then choose the next product improvement slice.
