@@ -27,8 +27,8 @@ Live local Docker review page check:
 | C2DL1 Product Contract Adapter | `codex/concept-2d-live-contract` | accepted and merged | PASS | Complete |
 | C2DL2 Professional Deliverables Wiring | `codex/concept-2d-live-deliverables` | accepted and merged | PASS | Complete |
 | C2DL3 Review and Delivery UI Exposure | `codex/concept-2d-live-ui` | accepted and merged | PASS | Complete |
-| C2DL4 Evidence and Backward Compatibility | `codex/concept-2d-live-evidence` | ready to launch | pending | Launch after C2DL2/C2DL3 merge |
-| C2DL5 Closeout Acceptance | `codex/concept-2d-live-closeout` | not started | pending | Launch after C2DL4 accepted |
+| C2DL4 Evidence and Backward Compatibility | `codex/concept-2d-live-evidence` | accepted and merged | PASS | Complete |
+| C2DL5 Closeout Acceptance | `codex/concept-2d-live-closeout` | ready to launch | pending | Launch closeout on integrated API/Web main |
 
 ## Intake Template
 
@@ -211,3 +211,49 @@ Integrator decision:
 
 Next action:
 - Launch `C2DL4 Evidence and Backward Compatibility` on integrated API/Web `main`.
+
+## 2026-04-29 15:15 +07 - C2DL4 Evidence and Backward Compatibility
+
+Raw report source:
+- pasted by user:
+
+Session decision:
+- PASS
+
+Integrator assessment:
+- ACCEPT_FOR_INTEGRATION
+
+Changed files:
+- `tests/professional_deliverables/test_concept_2d_live_integration.py`
+
+Verification evidence:
+- Worker commands:
+  - `git merge --no-edit main` -> fast-forwarded to API main `5477d36`
+  - `pytest tests/professional_deliverables/test_concept_2d_live_integration.py -q` -> 3 passed
+  - `pytest tests/professional_deliverables -q` -> 74 passed, 2 skipped
+  - `pytest tests/test_foundation.py tests/test_flows.py -q` -> 15 passed
+  - `git diff --check --cached` -> passed
+- Integrator review:
+  - Confirmed the slice adds test evidence only and does not modify product code.
+  - Confirmed the full concept package test checks `> 7` PDF pages, `A-000`, `A-601`, `A-602`, `A-901`, package/schedule/assumption sheet text, selected `5.00 m` and `20.00 m` dimensions, stale golden label absence, DXF filename parity with package metadata, quality report readiness, and serialized concept package metadata.
+  - Confirmed the fallback test keeps the old 7-sheet route available with machine-readable fallback metadata and adapter blockers.
+- Integrator rerun from worker branch:
+  - `PYTHONPATH=. /Users/nguyenquocthong/project/ai-architect/ai-architect-api/.venv/bin/python -m pytest tests/professional_deliverables/test_concept_2d_live_integration.py -q` -> 3 passed
+  - `PYTHONPATH=. /Users/nguyenquocthong/project/ai-architect/ai-architect-api/.venv/bin/python -m pytest tests/professional_deliverables/test_product_concept_live_deliverables.py -q` -> 2 passed
+  - `git diff --check` -> passed
+- Integrator rerun from API `main` after merge:
+  - `PYTHONPATH=. .venv/bin/python -m pytest tests/professional_deliverables/test_concept_2d_live_integration.py -q` -> 3 passed
+  - `PYTHONPATH=. .venv/bin/python -m pytest tests/professional_deliverables -q` -> 74 passed, 2 skipped
+  - `PYTHONPATH=. .venv/bin/python -m pytest tests/test_foundation.py tests/test_flows.py -q` -> 15 passed
+
+Residual risk:
+- Docker/manual browser evidence is still pending C2DL5 closeout.
+- Existing dependency deprecation warnings remain unchanged.
+
+Integrator decision:
+- Accepted and merged into API `main`
+- Merge commit: `083bdb7`
+- Worker commit: `f2af501`
+
+Next action:
+- Launch `C2DL5 Closeout Acceptance` on integrated API/Web/Docs `main`.
