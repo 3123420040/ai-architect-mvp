@@ -1,6 +1,6 @@
 # AI Concept 2D Market-Quality Hardening Session Report Intake And Decision Log
 
-Status: ready for integrator intake
+Status: closed - C2D5 accepted
 
 Only the integrator thread owns this ledger. Worker final reports must be
 pasted back to the integrator, then recorded here with the integrator decision.
@@ -9,12 +9,12 @@ pasted back to the integrator, then recorded here with the integrator decision.
 
 | Session | Branch/Worktree | Current Status | Last Decision | Next Action |
 |---|---|---|---|---|
-| C2D0 Bootstrap/Worktrees | docs main at `/Users/nguyenquocthong/project/ai-architect/ai-architect-mvp` | accepted | scaffold and worktrees created | C2D1/C2D2/C2D3/C2D4 accepted; launch C2D5 after worktree sync from API `main` |
+| C2D0 Bootstrap/Worktrees | docs main at `/Users/nguyenquocthong/project/ai-architect/ai-architect-mvp` | accepted | scaffold and worktrees created | complete |
 | C2D1 Input Style Contract | `codex/concept-2d-input-style` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-input-style` | accepted | PASS / merged | complete; merge commit `f967316` |
 | C2D2 Spatial Layout Quality | `codex/concept-2d-layout-quality` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-layout-quality` | accepted | PASS / merged | complete; merge commit `e8ebb3c` |
 | C2D3 Drawing Craft Render QA | `codex/concept-2d-render-qa` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-render-qa` | accepted | PASS / merged | complete; merge commit `af63dec` |
 | C2D4 Client Review Revision Loop | `codex/concept-2d-review-loop` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-review-loop` | accepted | PASS / merged | complete; merge commit `285ca49` |
-| C2D5 Closeout Acceptance | `codex/concept-2d-closeout` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/concept-2d-closeout` | ready | pending | sync from API `main`, then run closeout |
+| C2D5 Closeout Acceptance | API `main` at `/Users/nguyenquocthong/project/ai-architect/ai-architect-api`; evidence under `.artifacts/concept-2d-closeout-20260429` | accepted | PASS / closed | complete; docs commit `4af905d` |
 
 ## Intake Rules
 
@@ -262,3 +262,52 @@ Integrator decision:
 
 Next action:
 - Launch C2D5 after its worktree merges current API `main`.
+
+## 2026-04-29 12:17 +07 - C2D5 Closeout Acceptance
+
+Raw report source:
+- pasted by user into integrator thread.
+
+Session decision:
+- PASS
+
+Integrator assessment:
+- ACCEPT_FOR_INTEGRATION
+
+Changed files:
+- `docs/phase-2/handoffs/ui-e2e-professional-deliverables/21-ai-concept-2d-acceptance-report.md`
+- untracked evidence artifacts under `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.artifacts/concept-2d-closeout-20260429`
+
+Verification evidence:
+- Commands:
+  - `PYTHONPATH=. .venv/bin/python -m pytest tests/test_design_intelligence_style_inference.py tests/test_concept_model_contract.py tests/test_concept_layout_generator.py tests/test_concept_revision_loop.py tests/professional_deliverables/test_concept_2d_package.py tests/professional_deliverables/test_ai_concept_2d_e2e.py -q`
+  - `PYTHONPATH=. .venv/bin/python -m pytest tests/test_foundation.py tests/test_flows.py -q`
+  - `PYTHONPATH=. .venv/bin/python -m pytest tests/professional_deliverables -q`
+  - `make sprint3-ci-linux`
+  - independent `summary.json` assertion for the three closeout manual render cases.
+- Focused tests:
+  - Integrated API `main` focused concept closeout suite: 33 passed.
+  - Foundation/flows: 15 passed.
+  - Professional deliverables: 68 passed, 2 skipped.
+  - Docker parity: Sprint 2 professional suite 70 passed; Sprint 3 professional suite 70 passed.
+- Main rerun:
+  - All closeout commands were run from integrated API `main` at `285ca49`.
+- Gaps:
+  - Spaced lot dimensions such as `7m x 25m` are not parsed by the current extractor; compact notation `7x25m` is covered.
+- Manual render evidence, if applicable:
+  - `/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.artifacts/concept-2d-closeout-20260429/summary.json`
+  - Cases: `case-1-7x25-modern-tropical`, `case-2-5x20-minimal-warm`, `case-3-apartment-indochine-descriptors`.
+  - All three cases report package QA PASS, physical/render QA PASS, nonblank PDF pages, nonempty DXF sheets, concept-only status present, and no unsafe scope claims.
+
+Residual risk:
+- Flakes: none observed.
+- Known gaps: real image analysis remains descriptor-only; layout remains first-pass concept planning; spaced lot dimension parsing is not yet supported.
+
+Integrator decision:
+- Accepted and closed.
+- API closeout commit: `285ca49`.
+- Docs acceptance report commit: `4af905d`.
+- Rework prompt, if any: none.
+
+Next action:
+- Workflow complete. Next development should start as a new scoped task, with `LOT_DIMENSION_SPACED_UNIT_NOT_PARSED` as a small candidate fix if desired.
