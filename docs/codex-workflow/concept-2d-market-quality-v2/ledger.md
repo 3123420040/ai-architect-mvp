@@ -7,7 +7,7 @@ Status: bootstrap complete
 | Session | Branch/Worktree | Current Status | Last Decision | Next Action |
 |---|---|---|---|---|
 | C2DQ0 Bootstrap/Worktrees | docs `main` | completed | PASS | launch C2DQ1 |
-| C2DQ1 Acceptance Rubric And Case Matrix | `codex/concept-2d-market-rubric` / mvp worktree | ready | pending | launch after C2DQ0 |
+| C2DQ1 Acceptance Rubric And Case Matrix | `codex/concept-2d-market-rubric` / mvp worktree | completed | PASS | merge docs and launch C2DQ2-C2DQ4 |
 | C2DQ2 Spatial Planning Quality | `codex/concept-2d-market-spatial` / API worktree | not started | pending | launch after C2DQ1 accepted |
 | C2DQ3 Drawing Craft And Readability | `codex/concept-2d-market-craft` / API worktree | not started | pending | launch after C2DQ1 accepted |
 | C2DQ4 Style And Facade Expression | `codex/concept-2d-market-style` / API worktree | not started | pending | launch after C2DQ1 accepted |
@@ -48,6 +48,65 @@ Verification:
 
 Next action:
 - Launch C2DQ1 using `session-prompts/c2dq1-acceptance-rubric-and-case-matrix.prompt.md`.
+
+## 2026-04-30 - C2DQ1 Acceptance Rubric And Case Matrix
+
+Raw report source:
+- local C2DQ1 worktree session
+
+Session decision:
+- PASS
+
+Integrator assessment:
+- ACCEPT_FOR_INTEGRATION pending review/merge
+
+Changed files:
+- `docs/codex-workflow/concept-2d-market-quality-v2/market-quality-rubric.md`
+- `docs/codex-workflow/concept-2d-market-quality-v2/20-case-matrix.md`
+- `docs/codex-workflow/concept-2d-market-quality-v2/evidence-template.md`
+- `docs/codex-workflow/concept-2d-market-quality-v2/ledger.md`
+
+Verification evidence:
+- Commands:
+  - `git merge main`
+  - `git diff --check`
+  - manual read-through of generated docs
+- Focused tests: not applicable, docs-only session
+- Generated artifacts: not applicable
+- Browser/manual evidence: not applicable
+- Main rerun: not applicable for C2DQ1 docs-only session
+- Gaps: audit file was absent in the worktree output directory but present in the
+  main project output directory and read from there
+
+Market-quality evidence:
+- Homeowner readability: rubric defines ready/partial/failed criteria and evidence
+  capture; case matrix includes low-communication, storage, lifestyle, and review
+  question pressure cases
+- Architect plausibility: rubric defines concept drawing set expectations for
+  site, plans, elevation, section, schedules, and notes
+- Spatial planning: matrix covers narrow lots, larger lots, apartments, elder
+  access, wet cores, storage, furniture, circulation, and shophouse privacy split
+- Drawing craft: rubric defines viewport, whitespace, dimensions, line hierarchy,
+  label collision, schedule polish, PDF render, and DXF parity checks
+- Style expression: matrix covers minimal warm, modern tropical, Indochine,
+  modern minimalist, explicit dislikes, and reference descriptors
+- Revision usefulness: matrix includes natural-language kitchen/storage revision
+  and style-change revision while preserving geometry
+- Concept-only safety: rubric and evidence template require concept-only warnings,
+  `construction_ready=false`, labeled assumptions, and no permit/code/MEP/
+  structural/legal/final-material claims
+
+Residual risk:
+- Flakes: none observed
+- Known gaps: C2DQ6 still owns integrated artifact truth; C2DQ1 created acceptance
+  docs only
+
+Integrator decision:
+- Accepted and merged: pending
+- Merge commit: pending
+
+Next action:
+- After review/merge, launch C2DQ2, C2DQ3, and C2DQ4 in parallel.
 
 ## Intake Template
 
