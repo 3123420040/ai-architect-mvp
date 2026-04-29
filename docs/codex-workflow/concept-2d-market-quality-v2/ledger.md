@@ -1,6 +1,6 @@
 # Concept 2D Market Quality V2 Session Report Intake And Decision Log
 
-Status: C2DQ5 integrated; ready to launch C2DQ6 closeout
+Status: C2DQ6 closeout complete
 
 ## Status Board
 
@@ -12,7 +12,7 @@ Status: C2DQ5 integrated; ready to launch C2DQ6 closeout
 | C2DQ3 Drawing Craft And Readability | `codex/concept-2d-market-craft` / API worktree | merged | PASS | launch C2DQ5 |
 | C2DQ4 Style And Facade Expression | `codex/concept-2d-market-style` / API worktree | merged | PASS | launch C2DQ5 |
 | C2DQ5 Client Revision Truth Loop | `codex/concept-2d-market-revision` / API worktree | merged | PASS | launch C2DQ6 |
-| C2DQ6 Integrated Closeout Acceptance | `codex/concept-2d-market-closeout` / API worktree | ready | pending | launch now |
+| C2DQ6 Integrated Closeout Acceptance | `codex/concept-2d-market-closeout` / API worktree | completed | PASS | phase complete |
 
 ## Current Baseline
 
@@ -264,6 +264,41 @@ Integrator decision:
 
 Next action:
 - Launch C2DQ6 using `session-prompts/c2dq6-integrated-closeout-acceptance.prompt.md`.
+
+## 2026-04-30 03:45 +07 - C2DQ6 Integrated Closeout Acceptance
+
+Session decision:
+- PASS
+
+Integrator assessment:
+- ACCEPTED
+
+Closeout report:
+- `docs/codex-workflow/concept-2d-market-quality-v2/closeout-report.md`
+
+Verification evidence:
+- API professional deliverables: `91 passed, 2 skipped`
+- API foundation/flows/briefing: `21 passed`
+- Focused integrated concept/revision reruns: `42 passed`
+- Web lint/build: passed; lint has 5 existing warnings
+- `make sprint3-ci-linux`: PASS; container suite ended with `93 passed`
+- Docker rebuild: passed
+- Browser/product audit: 20/20 cases `PASS_FOR_CONCEPT_REVIEW`
+- Sample PDF/DXF inspection: 5 packages inspected; PDF/DXF ready, geometry
+  preserved, DXF meters/openable, and no positive unsafe readiness claims
+- Review/Delivery UI evidence: console errors 0, network failures 0
+
+Residual risk:
+- Local DWG clean-open remains skipped without the ODA converter.
+- UI asset badges can inherit partial/not-final wording from overall bundle
+  partial status, while Concept 2D package and PDF/DXF states remain ready.
+
+Integrator decision:
+- Accepted and closed: yes
+
+Next action:
+- Phase complete. Choose the next product-quality target or start a new
+  workflow for the next improvement area.
 
 ## Intake Template
 
