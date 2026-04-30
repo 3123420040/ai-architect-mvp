@@ -13,7 +13,7 @@ Status: H6 accepted and merged
 | H4 Concept Input Contract | `codex/ai-harness-concept-input` | accepted and merged | PASS | H6 accepted |
 | H5 Style Pattern Tools | `codex/ai-harness-style-tools` | accepted and merged | PASS | H4 ready |
 | H6 UI Assumption Preview Flow | `codex/ai-harness-ui` | accepted and merged | PASS | launch H7 |
-| H7 Evidence And Closeout | `codex/ai-harness-closeout` | not started | pending | ready after H1-H6 integration |
+| H7 Evidence And Closeout | `codex/ai-harness-closeout` | completed | PASS | phase closeout complete |
 
 ## Known Baseline Notes
 
@@ -245,6 +245,54 @@ Integrator decision:
 
 Next action:
 - Launch H7 Evidence And Closeout from integrated API/Web/Docs main.
+
+## 2026-04-30 20:05 +07 - H7 Evidence And Closeout
+
+Raw report source:
+- integrated local main rerun by H7 closeout agent
+
+Session decision:
+- PASS
+
+Integrator assessment:
+- ACCEPT_FOR_INTEGRATION
+
+Changed files:
+- Docs: `docs/codex-workflow/ai-design-intake-harness/closeout-report.md`
+- Docs: `docs/codex-workflow/ai-design-intake-harness/ledger.md`
+
+Verification evidence:
+- API integrated main: `PYTHONPATH=. .venv/bin/python -m pytest tests/test_llm_intake.py tests/test_flows.py -q` -> 19 passed.
+- API integrated main: `PYTHONPATH=. .venv/bin/python -m pytest tests/test_design_harness_loop.py tests/test_design_harness_readiness.py tests/test_design_harness_style_tools.py tests/test_design_harness_compiler.py -q` -> 24 passed.
+- API integrated main: `PYTHONPATH=. .venv/bin/python -m pytest tests/test_concept_model_contract.py tests/test_concept_layout_generator.py tests/test_product_concept_adapter.py -q` -> 22 passed.
+- API integrated main: `PYTHONPATH=. .venv/bin/python -m pytest tests/professional_deliverables/test_ai_concept_2d_e2e.py tests/professional_deliverables/test_concept_2d_live_integration.py -q` -> 16 passed.
+- Web integrated main: `pnpm lint` -> pass with 5 existing warnings outside H6 changed file.
+- Web integrated main: `pnpm build` -> pass.
+- Manual harness evidence:
+  - Low-communication townhouse `Nhà phố 5x20m, thích hiện đại ấm, sáng thoáng.` -> `missing_critical`, assumptions proposed, concept input blocked.
+  - Full townhouse with floors, bedrooms, WC, style, dislike -> `partial_with_assumptions`, valid `concept_design_input_v1` emitted with `concept_only=true` and `construction_ready=false`.
+  - Apartment renovation area/style -> apartment-specific readiness with `renovation_scope`, bedroom, and bathroom gaps; concept input blocked.
+  - Unsafe construction/permit/legal/MEP readiness request -> `blocked_by_safety_scope`, `safety_scope.unsafe_request`, concept input blocked.
+  - Existing API product flow -> locked brief, generated 2 options, selected and approved version, export package quality `pass`, professional-deliverables bundle/job queued.
+- Browser evidence:
+  - Temporary API `127.0.0.1:18080` and Web `127.0.0.1:3100`.
+  - Web intake showed missing guidance and assumptions for low-communication townhouse, valid concept data after fuller details, then `Chốt brief và xem Phương án` CTA.
+  - Clicking CTA emitted concept input, locked the brief, and navigated to `/designs` with generation button visible.
+- Trace evidence:
+  - Public chat response did not expose raw `harness_trace`.
+  - Chat history metadata persisted sanitized `harness_trace_summary_v1` with gates `deterministic_analysis`, `llm_configured`, `deterministic_merge`, `style_pattern_tools`.
+  - No `sk-` secret marker appeared in persisted trace summary.
+
+Residual risk:
+- Flakes: none observed.
+- Known gaps: no live provider call in H7; browser verification used temporary ports because existing Docker listener occupied `18000` and `3000`; manual professional-deliverables route evidence stopped at queued bundle/job while required integrated tests verified Concept 2D/professional deliverables behavior.
+
+Integrator decision:
+- Accepted for local closeout.
+- Docs closeout commit: this local H7 closeout commit.
+
+Next action:
+- Commit closeout locally with `docs(ai-harness): close intake harness acceptance`.
 
 ## Intake Template
 
