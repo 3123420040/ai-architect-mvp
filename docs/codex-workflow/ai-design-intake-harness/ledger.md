@@ -1,6 +1,6 @@
 # AI Design Intake Harness Session Report Intake And Decision Log
 
-Status: H3 and H5 accepted and merged
+Status: H4 accepted and merged
 
 ## Status Board
 
@@ -10,9 +10,9 @@ Status: H3 and H5 accepted and merged
 | H1 LLM Trace Observability | `codex/ai-harness-trace` | accepted and merged | PASS | H2 accepted |
 | H2 Harness Core Wrapper | `codex/ai-harness-core` | accepted and merged | PASS | H3/H5 accepted |
 | H3 Readiness And Assumptions | `codex/ai-harness-readiness` | accepted and merged | PASS | H4 ready |
-| H4 Concept Input Contract | `codex/ai-harness-concept-input` | not started | pending | ready after H3/H5 merge |
+| H4 Concept Input Contract | `codex/ai-harness-concept-input` | accepted and merged | PASS | launch H6 |
 | H5 Style Pattern Tools | `codex/ai-harness-style-tools` | accepted and merged | PASS | H4 ready |
-| H6 UI Assumption Preview Flow | `codex/ai-harness-ui` | not started | pending | wait for H4 API contract |
+| H6 UI Assumption Preview Flow | `codex/ai-harness-ui` | not started | pending | ready after H4 merge |
 | H7 Evidence And Closeout | `codex/ai-harness-closeout` | not started | pending | wait for H1-H6 integration |
 
 ## Known Baseline Notes
@@ -171,6 +171,48 @@ Integrator decision:
 
 Next action:
 - Launch H4 Concept Input Contract from integrated API `main`.
+
+## 2026-04-30 19:06 +07 - H4 Concept Input Contract
+
+Raw report source:
+- pasted by user
+
+Session decision:
+- PASS
+
+Integrator assessment:
+- ACCEPT_FOR_INTEGRATION
+
+Changed files:
+- API: `app/services/design_harness/compiler.py`
+- API: `app/services/design_harness/schemas.py`
+- API: `app/services/design_harness/validators.py`
+- API: `app/services/design_harness/loop.py`
+- API: `app/api/v1/ai_harness.py`
+- API: `app/api/v1/router.py`
+- API: `app/api/v1/chat.py`
+- API: `tests/test_design_harness_compiler.py`
+- API: `tests/test_design_harness_loop.py`
+- API: `tests/test_flows.py`
+
+Verification evidence:
+- Worker reported compiler/loop focused tests -> 11 passed.
+- Worker reported LLM/flow regression -> 19 passed.
+- Worker reported concept regressions -> 22 passed.
+- Integrator rerun before merge: `PYTHONPATH=/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/ai-harness-concept-input /Users/nguyenquocthong/project/ai-architect/ai-architect-api/.venv/bin/python -m pytest tests/test_design_harness_compiler.py tests/test_design_harness_loop.py tests/test_llm_intake.py tests/test_flows.py tests/test_concept_model_contract.py tests/test_concept_layout_generator.py tests/test_product_concept_adapter.py -q` -> 52 passed.
+- Integrated main rerun after merge: `PYTHONPATH=. .venv/bin/python -m pytest tests/test_design_harness_compiler.py tests/test_design_harness_readiness.py tests/test_design_harness_style_tools.py tests/test_design_harness_loop.py tests/test_llm_intake.py tests/test_flows.py tests/test_foundation.py tests/test_concept_model_contract.py tests/test_concept_layout_generator.py tests/test_product_concept_adapter.py -q` -> 71 passed.
+
+Residual risk:
+- Flakes: none observed.
+- Known gaps: snapshot persistence is intentionally stored in latest AI message harness metadata; durable snapshot tables remain out of H4 scope. Web exposure remains H6 scope.
+
+Integrator decision:
+- Accepted and merged.
+- API worker commit: `e76b32c feat(ai-harness): add concept input contract`
+- API merge commit: `9c121cd merge: accept ai harness concept input contract`
+
+Next action:
+- Launch H6 UI Assumption Preview Flow from integrated API/Web main.
 
 ## Intake Template
 
