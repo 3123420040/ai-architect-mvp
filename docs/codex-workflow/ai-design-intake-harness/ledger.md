@@ -1,17 +1,17 @@
 # AI Design Intake Harness Session Report Intake And Decision Log
 
-Status: H1 accepted and merged
+Status: H2 accepted and merged
 
 ## Status Board
 
 | Session | Branch/Worktree | Current Status | Last Decision | Next Action |
 |---|---|---|---|---|
 | H0 Bootstrap/Worktrees | docs main | completed | PASS | H1 accepted |
-| H1 LLM Trace Observability | `codex/ai-harness-trace` | accepted and merged | PASS | launch H2 |
-| H2 Harness Core Wrapper | `codex/ai-harness-core` | not started | pending | ready after H1 merge |
-| H3 Readiness And Assumptions | `codex/ai-harness-readiness` | not started | pending | wait for H2 merge |
+| H1 LLM Trace Observability | `codex/ai-harness-trace` | accepted and merged | PASS | H2 accepted |
+| H2 Harness Core Wrapper | `codex/ai-harness-core` | accepted and merged | PASS | launch H3 and H5 |
+| H3 Readiness And Assumptions | `codex/ai-harness-readiness` | not started | pending | ready after H2 merge |
 | H4 Concept Input Contract | `codex/ai-harness-concept-input` | not started | pending | wait for H3/H5 merge |
-| H5 Style Pattern Tools | `codex/ai-harness-style-tools` | not started | pending | wait for H2 merge; can run parallel with H3 |
+| H5 Style Pattern Tools | `codex/ai-harness-style-tools` | not started | pending | ready after H2 merge; can run parallel with H3 |
 | H6 UI Assumption Preview Flow | `codex/ai-harness-ui` | not started | pending | wait for H4 API contract |
 | H7 Evidence And Closeout | `codex/ai-harness-closeout` | not started | pending | wait for H1-H6 integration |
 
@@ -54,6 +54,44 @@ Integrator decision:
 
 Next action:
 - Launch H2 Harness Core Wrapper from integrated API `main`.
+
+## 2026-04-30 16:04 +07 - H2 Harness Core Wrapper
+
+Raw report source:
+- pasted by user
+
+Session decision:
+- PASS
+
+Integrator assessment:
+- ACCEPT_FOR_INTEGRATION
+
+Changed files:
+- API: `app/services/design_harness/**`
+- API: `app/services/llm.py`
+- API: `app/api/v1/chat.py`
+- API: `app/schemas.py`
+- API: `tests/test_design_harness_loop.py`
+- API: `tests/test_flows.py`
+
+Verification evidence:
+- Worker reported `tests/test_design_harness_loop.py tests/test_llm_intake.py -q` -> 12 passed.
+- Worker reported `tests/test_flows.py -q` -> 10 passed.
+- Worker reported `tests/test_foundation.py -q` -> 6 passed.
+- Integrator rerun before merge: `PYTHONPATH=/Users/nguyenquocthong/project/ai-architect/ai-architect-api/.worktrees/ai-harness-core /Users/nguyenquocthong/project/ai-architect/ai-architect-api/.venv/bin/python -m pytest tests/test_design_harness_loop.py tests/test_llm_intake.py tests/test_flows.py tests/test_foundation.py -q` -> 28 passed.
+- Integrated main rerun after merge: `PYTHONPATH=. .venv/bin/python -m pytest tests/test_design_harness_loop.py tests/test_llm_intake.py tests/test_flows.py tests/test_foundation.py -q` -> 28 passed.
+
+Residual risk:
+- Flakes: none observed.
+- Known gaps: readiness and assumption engines are pass-through stubs by design; H3 owns real readiness/assumption behavior.
+
+Integrator decision:
+- Accepted and merged.
+- API worker commit: `c901a65 feat(ai-harness): wrap intake in harness loop`
+- API merge commit: `97b7043 merge: accept ai harness core wrapper`
+
+Next action:
+- Launch H3 Readiness And Assumptions and H5 Style Pattern Tools from integrated API `main`; they can run in parallel.
 
 ## Intake Template
 
