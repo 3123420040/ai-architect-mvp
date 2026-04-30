@@ -1,6 +1,6 @@
 # AI Design Intake Harness Session Report Intake And Decision Log
 
-Status: H4 accepted and merged
+Status: H6 accepted and merged
 
 ## Status Board
 
@@ -10,10 +10,10 @@ Status: H4 accepted and merged
 | H1 LLM Trace Observability | `codex/ai-harness-trace` | accepted and merged | PASS | H2 accepted |
 | H2 Harness Core Wrapper | `codex/ai-harness-core` | accepted and merged | PASS | H3/H5 accepted |
 | H3 Readiness And Assumptions | `codex/ai-harness-readiness` | accepted and merged | PASS | H4 ready |
-| H4 Concept Input Contract | `codex/ai-harness-concept-input` | accepted and merged | PASS | launch H6 |
+| H4 Concept Input Contract | `codex/ai-harness-concept-input` | accepted and merged | PASS | H6 accepted |
 | H5 Style Pattern Tools | `codex/ai-harness-style-tools` | accepted and merged | PASS | H4 ready |
-| H6 UI Assumption Preview Flow | `codex/ai-harness-ui` | not started | pending | ready after H4 merge |
-| H7 Evidence And Closeout | `codex/ai-harness-closeout` | not started | pending | wait for H1-H6 integration |
+| H6 UI Assumption Preview Flow | `codex/ai-harness-ui` | accepted and merged | PASS | launch H7 |
+| H7 Evidence And Closeout | `codex/ai-harness-closeout` | not started | pending | ready after H1-H6 integration |
 
 ## Known Baseline Notes
 
@@ -213,6 +213,38 @@ Integrator decision:
 
 Next action:
 - Launch H6 UI Assumption Preview Flow from integrated API/Web main.
+
+## 2026-04-30 19:47 +07 - H6 UI Assumption Preview Flow
+
+Raw report source:
+- pasted by user
+
+Session decision:
+- PASS
+
+Integrator assessment:
+- ACCEPT_FOR_INTEGRATION
+
+Changed files:
+- Web: `src/components/intake-client.tsx`
+
+Verification evidence:
+- Worker reported `pnpm lint` -> pass with existing warnings outside changed file.
+- Worker reported `pnpm build` -> pass.
+- Integrator rerun before merge in worktree: `pnpm lint` -> pass with 5 existing warnings; `pnpm build` -> pass.
+- Integrated Web main rerun after merge: `pnpm lint` -> pass with 5 existing warnings; `pnpm build` -> pass.
+
+Residual risk:
+- Flakes: none observed.
+- Known gaps: worker browser check used route mocks for H4 response on a temporary dev port because local API CORS is configured for `localhost:3000`.
+
+Integrator decision:
+- Accepted and merged.
+- Web worker commit: `33a8051 feat(ai-harness): expose intake assumptions in ui`
+- Web merge commit: `59b3246 merge: accept ai harness ui assumption preview`
+
+Next action:
+- Launch H7 Evidence And Closeout from integrated API/Web/Docs main.
 
 ## Intake Template
 
